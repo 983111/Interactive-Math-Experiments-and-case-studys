@@ -10,11 +10,11 @@
 :root{--white:#fff;--off:#fafaf9;--paper:#f5f4f1;--rule:#e2e0db;--ink:#111110;--muted:#7a7870;--accent:#c0392b;--nav-h:64px;}
 *{box-sizing:border-box;margin:0;padding:0} body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--ink);line-height:1.7;padding-top:var(--nav-h)}
 .subpage-nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
-.subpage-logo{font-family:'Playfair Display',serif;text-decoration:none;color:var(--ink)} .subpage-logo span{color:var(--accent)}
+.subpage-logo{font-family:'Playfair Display',serif;text-decoration:none;color:var(--ink);white-space:nowrap} .subpage-logo span{color:var(--accent)}
 .subpage-links{display:flex;gap:1.3rem;list-style:none} .subpage-links a{text-decoration:none;color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
 main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px solid var(--rule);background:var(--paper);padding:1.2rem 1rem;margin-bottom:1.5rem}
 .badge{font:500 .72rem 'DM Mono',monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)} h1{font-family:'Playfair Display',serif;font-size:2rem;margin:.4rem 0}
-.byline{color:var(--muted);font-size:.95rem} article{background:#fff;border:1px solid var(--rule);padding:1.2rem} article h2{margin:1.3rem 0 .6rem;font-family:'Playfair Display',serif} article h3{margin:1rem 0 .45rem} p,li{margin:.35rem 0} ul,ol{padding-left:1.4rem;margin:.3rem 0}
+.byline{color:var(--muted);font-size:.95rem} article{background:#fff;border:1px solid var(--rule);padding:1.2rem} article h2{margin:1.3rem 0 .6rem;font-family:'Playfair Display',serif} article h3{margin:1rem 0 .45rem} p,li{margin:.35rem 0} ul,ol{padding-left:1.4rem;margin:.3rem 0} figure{margin:.8rem 0} figure img{max-width:100%;height:auto;border:1px solid var(--rule)} table{width:100%;border-collapse:collapse;margin:.8rem 0} th,td{border:1px solid var(--rule);padding:.45rem;text-align:left;vertical-align:top} pre{background:#111110;color:#f5f4f1;padding:.8rem;overflow:auto;border-radius:6px;margin:.8rem 0} code{font-family:'DM Mono',monospace}
 @media (max-width:760px){.subpage-links{display:none}}
 </style>
 </head>
@@ -24,68 +24,68 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <section class="hero"><div class="badge">Flagship Research Project</div><h1>Hybrid Interpretable Scam Detection Pipeline</h1><p class="byline">Vishwajeet Adkine · Independent AI Safety Researcher</p></section>
 <article><h1>An Interpretable Multi-Signal Scam Detection System Using Machine Learning and Large Language Models</h1>
 
-<p>**Author**: Vishwajeet Adkine  </p>
-<p>**Date**: February 2025  </p>
-<p>**Keywords**: Scam Detection, Interpretable ML, LLM Safety, Ensemble Systems, Feature Engineering</p>
+<p><strong>Author</strong>: Vishwajeet Adkine  </p>
+<p><strong>Date</strong>: February 2025  </p>
+<p><strong>Keywords</strong>: Scam Detection, Interpretable ML, LLM Safety, Ensemble Systems, Feature Engineering</p>
 
-<p>---</p>
+<hr>
 
 <h2>Graphical Abstract</h2>
 
-<p>![Graphical Abstract](figures/fig8_graphical_abstract.png)</p>
+<figure><img src="figures/fig8_graphical_abstract.png" alt="Graphical Abstract" loading="lazy"></figure>
 
-<p>*Figure: High-level overview of the interpretable multi-signal scam detection system combining feature engineering, machine learning, and LLM safety validation.*</p>
+<p><em>Figure: High-level overview of the interpretable multi-signal scam detection system combining feature engineering, machine learning, and LLM safety validation.</em></p>
 
-<p>---</p>
+<hr>
 
 <h2>Table of Contents</h2>
 
 <ol>
-<li>[Abstract](#abstract)</li>
-<li>[Introduction](#1-introduction)</li>
-<li>[Problem Formulation](#2-problem-formulation)</li>
-<li>[System Architecture](#3-system-architecture)</li>
-<li>[Feature Engineering](#4-feature-engineering)</li>
-<li>[Machine Learning Model](#5-machine-learning-model)</li>
-<li>[Model Performance](#6-model-performance)</li>
-<li>[Model Explainability](#7-model-explainability)</li>
-<li>[Ensemble Decision Strategy](#8-ensemble-decision-strategy)</li>
-<li>[Precision-Recall Trade-offs](#9-precision-recall-trade-offs)</li>
-<li>[LLM-Based Semantic Safety Layer](#10-llm-based-semantic-safety-layer)</li>
-<li>[Deployment Architecture](#11-deployment-architecture)</li>
-<li>[Limitations and Future Work](#12-limitations-and-future-work)</li>
-<li>[Conclusion](#13-conclusion)</li>
-<li>[References](#14-references)</li>
-<li>[Appendices](#appendices)</li>
+<li><a href="#abstract">Abstract</a></li>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-problem-formulation">Problem Formulation</a></li>
+<li><a href="#3-system-architecture">System Architecture</a></li>
+<li><a href="#4-feature-engineering">Feature Engineering</a></li>
+<li><a href="#5-machine-learning-model">Machine Learning Model</a></li>
+<li><a href="#6-model-performance">Model Performance</a></li>
+<li><a href="#7-model-explainability">Model Explainability</a></li>
+<li><a href="#8-ensemble-decision-strategy">Ensemble Decision Strategy</a></li>
+<li><a href="#9-precision-recall-trade-offs">Precision-Recall Trade-offs</a></li>
+<li><a href="#10-llm-based-semantic-safety-layer">LLM-Based Semantic Safety Layer</a></li>
+<li><a href="#11-deployment-architecture">Deployment Architecture</a></li>
+<li><a href="#12-limitations-and-future-work">Limitations and Future Work</a></li>
+<li><a href="#13-conclusion">Conclusion</a></li>
+<li><a href="#14-references">References</a></li>
+<li><a href="#appendices">Appendices</a></li>
 </ol>
 
-<p>---</p>
+<hr>
 
 <h2>Abstract</h2>
 
-<p>Scam and phishing detection systems often rely either on rigid heuristic rules or opaque large language models (LLMs). Heuristics lack generalization, while LLMs are costly and difficult to audit. This work presents a **hybrid, interpretable scam detection pipeline** that combines a feature-based supervised machine learning model, semantic analysis via an LLM safety model, and rule-based heuristics within a unified ensemble decision framework. The proposed system emphasizes explainability, precision–recall trade-offs, and deployment realism, making it suitable for real-world AI safety applications.</p>
+<p>Scam and phishing detection systems often rely either on rigid heuristic rules or opaque large language models (LLMs). Heuristics lack generalization, while LLMs are costly and difficult to audit. This work presents a <strong>hybrid, interpretable scam detection pipeline</strong> that combines a feature-based supervised machine learning model, semantic analysis via an LLM safety model, and rule-based heuristics within a unified ensemble decision framework. The proposed system emphasizes explainability, precision–recall trade-offs, and deployment realism, making it suitable for real-world AI safety applications.</p>
 
-<p>**Key Results:**</p>
+<p><strong>Key Results:</strong></p>
 <ul>
-<li>**100% Recall** (no missed scams)</li>
-<li>**95% Precision** (minimal false alarms)</li>
-<li>**&lt;5ms inference** (production-ready)</li>
-<li>**Fully interpretable** decisions via coefficient-based attribution</li>
+<li><strong>100% Recall</strong> (no missed scams)</li>
+<li><strong>95% Precision</strong> (minimal false alarms)</li>
+<li><strong>&lt;5ms inference</strong> (production-ready)</li>
+<li><strong>Fully interpretable</strong> decisions via coefficient-based attribution</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>1. Introduction</h2>
 
 <p>Online scams exploit urgency, trust manipulation, and malicious links to deceive users. Traditional approaches fall into three categories:</p>
 
 <ol>
-<li>**Rule-based systems** – Precise but brittle, easily bypassed by novel attacks</li>
-<li>**Machine learning classifiers** – Generalizable but often opaque, lacking interpretability</li>
-<li>**LLM-based moderation** – Semantically powerful but expensive, slow, and unstable</li>
+<li><strong>Rule-based systems</strong> – Precise but brittle, easily bypassed by novel attacks</li>
+<li><strong>Machine learning classifiers</strong> – Generalizable but often opaque, lacking interpretability</li>
+<li><strong>LLM-based moderation</strong> – Semantically powerful but expensive, slow, and unstable</li>
 </ol>
 
-<p>This research explores whether a **lightweight, interpretable ML model**, when combined with LLM-based semantic checks and heuristics, can provide robust scam detection without over-reliance on any single method.</p>
+<p>This research explores whether a <strong>lightweight, interpretable ML model</strong>, when combined with LLM-based semantic checks and heuristics, can provide robust scam detection without over-reliance on any single method.</p>
 
 <h3>1.1 Research Questions</h3>
 
@@ -98,30 +98,30 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <h3>1.2 Contributions</h3>
 
 <ul>
-<li>A **16-feature engineering framework** capturing behavioral and structural scam signals</li>
-<li>**Interpretable logistic regression** with coefficient-based explainability</li>
-<li>**Multi-signal ensemble strategy** combining ML, heuristics, and (planned) LLM validation</li>
-<li>**Production-ready deployment architecture** with ML microservice design</li>
+<li>A <strong>16-feature engineering framework</strong> capturing behavioral and structural scam signals</li>
+<li><strong>Interpretable logistic regression</strong> with coefficient-based explainability</li>
+<li><strong>Multi-signal ensemble strategy</strong> combining ML, heuristics, and (planned) LLM validation</li>
+<li><strong>Production-ready deployment architecture</strong> with ML microservice design</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>2. Problem Formulation</h2>
 
 <p>Given an input text $x$, classify it into:</p>
 <ul>
-<li>**Safe**</li>
-<li>**Suspicious** (requires human review)</li>
-<li>**Scam**</li>
+<li><strong>Safe</strong></li>
+<li><strong>Suspicious</strong> (requires human review)</li>
+<li><strong>Scam</strong></li>
 </ul>
 
 <h3>2.1 Optimization Objectives</h3>
 
 <p>Emphasis on:</p>
 <ol>
-<li>**High recall** for scam detection (minimize false negatives)</li>
-<li>**Low false positive rate** (minimize user disruption)</li>
-<li>**Explainability** of decisions (critical for security auditing)</li>
+<li><strong>High recall</strong> for scam detection (minimize false negatives)</li>
+<li><strong>Low false positive rate</strong> (minimize user disruption)</li>
+<li><strong>Explainability</strong> of decisions (critical for security auditing)</li>
 </ol>
 
 <h3>2.2 Formal Definition</h3>
@@ -133,97 +133,103 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 
 <p>where $f(x)$ represents the probability of $x$ being a scam.</p>
 
-<p>---</p>
+<hr>
 
 <h2>3. System Architecture</h2>
 
 <p>The proposed system employs a multi-layered architecture that separates concerns between user interface, business logic, machine learning inference, and optional semantic validation. This design ensures scalability, maintainability, and independent iteration of each component.</p>
 
-<p>![System Architecture](figures/fig1_system_architecture.png)</p>
+<figure><img src="figures/fig1_system_architecture.png" alt="System Architecture" loading="lazy"></figure>
 
-<p>*Figure 1: Multi-layer system architecture showing data flow from user input through backend services to ML and LLM components. The architecture emphasizes separation of concerns with distinct layers for frontend (web/mobile interface), Node.js backend (request handling and validation), Python ML microservice (feature extraction and prediction), and optional LLM service (semantic analysis for ambiguous cases).*</p>
+<p><em>Figure 1: Multi-layer system architecture showing data flow from user input through backend services to ML and LLM components. The architecture emphasizes separation of concerns with distinct layers for frontend (web/mobile interface), Node.js backend (request handling and validation), Python ML microservice (feature extraction and prediction), and optional LLM service (semantic analysis for ambiguous cases).</em></p>
 
 <h3>3.1 Architecture Layers</h3>
 
 <ol>
-<li>**Frontend Layer**: Web/mobile chat interface for user interaction</li>
-<li>**Backend Service**: Node.js application handling request validation, rate limiting, and response formatting</li>
-<li>**ML Microservice**: Python Flask service for feature extraction and model inference</li>
-<li>**LLM Service** (optional): Semantic analysis invoked only for ambiguous cases (0.4-0.6 confidence range)</li>
+<li><strong>Frontend Layer</strong>: Web/mobile chat interface for user interaction</li>
+<li><strong>Backend Service</strong>: Node.js application handling request validation, rate limiting, and response formatting</li>
+<li><strong>ML Microservice</strong>: Python Flask service for feature extraction and model inference</li>
+<li><strong>LLM Service</strong> (optional): Semantic analysis invoked only for ambiguous cases (0.4-0.6 confidence range)</li>
 </ol>
 
 <h3>3.2 Design Benefits</h3>
 
 <ul>
-<li>**Independent scaling**: Each layer can scale independently based on load</li>
-<li>**Technology flexibility**: Best tool for each task (Node.js for I/O, Python for ML)</li>
-<li>**Fast iteration**: ML model updates don&#x27;t require backend redeployment</li>
-<li>**Cost optimization**: Expensive LLM calls only when necessary</li>
+<li><strong>Independent scaling</strong>: Each layer can scale independently based on load</li>
+<li><strong>Technology flexibility</strong>: Best tool for each task (Node.js for I/O, Python for ML)</li>
+<li><strong>Fast iteration</strong>: ML model updates don&#x27;t require backend redeployment</li>
+<li><strong>Cost optimization</strong>: Expensive LLM calls only when necessary</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>4. Feature Engineering</h2>
 
-<p>Instead of end-to-end deep learning, the system relies on **explicit feature design** based on domain knowledge of scam behavior. A total of 16 features are extracted from each message, capturing textual patterns, URL characteristics, and heuristic signals.</p>
+<p>Instead of end-to-end deep learning, the system relies on <strong>explicit feature design</strong> based on domain knowledge of scam behavior. A total of 16 features are extracted from each message, capturing textual patterns, URL characteristics, and heuristic signals.</p>
 
-<p>![Feature Engineering Pipeline](figures/fig2_feature_pipeline.png)</p>
+<figure><img src="figures/fig2_feature_pipeline.png" alt="Feature Engineering Pipeline" loading="lazy"></figure>
 
-<p>*Figure 2: Feature extraction pipeline showing transformation of raw messages into a 16-dimensional feature vector for ML classification. The pipeline extracts three categories of features: textual features (f1-f8) capturing linguistic patterns, URL features (f9-f15) identifying suspicious links, and a heuristic feature (f16) incorporating domain expertise.*</p>
+<p><em>Figure 2: Feature extraction pipeline showing transformation of raw messages into a 16-dimensional feature vector for ML classification. The pipeline extracts three categories of features: textual features (f1-f8) capturing linguistic patterns, URL features (f9-f15) identifying suspicious links, and a heuristic feature (f16) incorporating domain expertise.</em></p>
 
 <h3>4.1 Textual Features (f1–f8)</h3>
 
-<p>| Feature | Description | Type |</p>
-<p>|---------|-------------|------|</p>
-<p>| `f1` | Urgency cues (e.g., &quot;urgent&quot;, &quot;verify now&quot;, &quot;suspended&quot;) | Binary |</p>
-<p>| `f2` | Money-related keywords (&quot;lottery&quot;, &quot;free money&quot;, &quot;earn&quot;) | Binary |</p>
-<p>| `f3` | Sensitive intent (OTP, PIN, password, CVV) | Binary |</p>
-<p>| `f4` | Off-platform contact (Telegram, WhatsApp) | Binary |</p>
-<p>| `f5` | Text length (character count) | Integer |</p>
-<p>| `f6` | Exclamation marks count | Integer |</p>
-<p>| `f7` | Uppercase letter ratio | Float [0, 1] |</p>
-<p>| `f8` | Digit ratio | Float [0, 1] |</p>
+<table>
+<thead><tr><th>Feature</th><th>Description</th><th>Type</th></tr></thead>
+<tbody>
+<tr><td>`f1`</td><td>Urgency cues (e.g., &quot;urgent&quot;, &quot;verify now&quot;, &quot;suspended&quot;)</td><td>Binary</td></tr>
+<tr><td>`f2`</td><td>Money-related keywords (&quot;lottery&quot;, &quot;free money&quot;, &quot;earn&quot;)</td><td>Binary</td></tr>
+<tr><td>`f3`</td><td>Sensitive intent (OTP, PIN, password, CVV)</td><td>Binary</td></tr>
+<tr><td>`f4`</td><td>Off-platform contact (Telegram, WhatsApp)</td><td>Binary</td></tr>
+<tr><td>`f5`</td><td>Text length (character count)</td><td>Integer</td></tr>
+<tr><td>`f6`</td><td>Exclamation marks count</td><td>Integer</td></tr>
+<tr><td>`f7`</td><td>Uppercase letter ratio</td><td>Float [0, 1]</td></tr>
+<tr><td>`f8`</td><td>Digit ratio</td><td>Float [0, 1]</td></tr>
+</tbody>
+</table>
 
-<p>**Rationale**: These features capture common scam tactics such as creating urgency, promising financial rewards, requesting sensitive information, and using excessive emphasis.</p>
+<p><strong>Rationale</strong>: These features capture common scam tactics such as creating urgency, promising financial rewards, requesting sensitive information, and using excessive emphasis.</p>
 
 <h3>4.2 URL Features (f9–f15)</h3>
 
-<p>| Feature | Description | Type |</p>
-<p>|---------|-------------|------|</p>
-<p>| `f9` | Number of URLs | Integer |</p>
-<p>| `f10` | URL-to-word ratio | Float |</p>
-<p>| `f11` | IP-based URL presence | Binary |</p>
-<p>| `f12` | URL shortener (bit.ly, tinyurl) | Binary |</p>
-<p>| `f13` | Risky TLD (.tk, .ml, .ga, .pw, etc.) | Binary |</p>
-<p>| `f14` | Domain spoofing attempt | Binary |</p>
-<p>| `f15` | Verified domain (google.com, github.com) | Binary |</p>
+<table>
+<thead><tr><th>Feature</th><th>Description</th><th>Type</th></tr></thead>
+<tbody>
+<tr><td>`f9`</td><td>Number of URLs</td><td>Integer</td></tr>
+<tr><td>`f10`</td><td>URL-to-word ratio</td><td>Float</td></tr>
+<tr><td>`f11`</td><td>IP-based URL presence</td><td>Binary</td></tr>
+<tr><td>`f12`</td><td>URL shortener (bit.ly, tinyurl)</td><td>Binary</td></tr>
+<tr><td>`f13`</td><td>Risky TLD (.tk, .ml, .ga, .pw, etc.)</td><td>Binary</td></tr>
+<tr><td>`f14`</td><td>Domain spoofing attempt</td><td>Binary</td></tr>
+<tr><td>`f15`</td><td>Verified domain (google.com, github.com)</td><td>Binary</td></tr>
+</tbody>
+</table>
 
-<p>**Rationale**: Malicious actors often use URL obfuscation techniques (shorteners, IP addresses, free TLDs) to hide the true destination and evade detection.</p>
+<p><strong>Rationale</strong>: Malicious actors often use URL obfuscation techniques (shorteners, IP addresses, free TLDs) to hide the true destination and evade detection.</p>
 
 <h3>4.3 Aggregated Heuristic Signal (f16)</h3>
 
 <p>A manually designed heuristic score is used as:</p>
 <ul>
-<li>A **standalone safety signal** (fast initial filtering)</li>
-<li>An **input feature** to the ML model (capped to prevent data leakage)</li>
+<li>A <strong>standalone safety signal</strong> (fast initial filtering)</li>
+<li>An <strong>input feature</strong> to the ML model (capped to prevent data leakage)</li>
 </ul>
 
-<p>This creates a **hybrid feature space** combining human intuition and statistical learning.</p>
+<p>This creates a <strong>hybrid feature space</strong> combining human intuition and statistical learning.</p>
 
-<p>**Design Choice**: Heuristics provide domain expertise that might take thousands of samples for ML to learn. By including it as a feature (with proper capping), we get the best of both worlds.</p>
+<p><strong>Design Choice</strong>: Heuristics provide domain expertise that might take thousands of samples for ML to learn. By including it as a feature (with proper capping), we get the best of both worlds.</p>
 
-<p>---</p>
+<hr>
 
 <h2>5. Machine Learning Model</h2>
 
 <h3>5.1 Model Choice</h3>
 
-<p>**Logistic Regression** was selected due to:</p>
+<p><strong>Logistic Regression</strong> was selected due to:</p>
 <ol>
-<li>**Interpretability** of coefficients (each feature&#x27;s contribution is transparent)</li>
-<li>**Fast inference** (&lt;1ms per prediction)</li>
-<li>**Stable behavior** under limited data</li>
-<li>**Proven effectiveness** for text classification tasks</li>
+<li><strong>Interpretability</strong> of coefficients (each feature&#x27;s contribution is transparent)</li>
+<li><strong>Fast inference</strong> (&lt;1ms per prediction)</li>
+<li><strong>Stable behavior</strong> under limited data</li>
+<li><strong>Proven effectiveness</strong> for text classification tasks</li>
 </ol>
 
 <p>Formally, the model predicts:</p>
@@ -240,7 +246,7 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 
 <h3>5.2 Calibration</h3>
 
-<p>Raw logistic regression scores can be poorly calibrated on small datasets. We apply **Platt scaling** (sigmoid calibration):</p>
+<p>Raw logistic regression scores can be poorly calibrated on small datasets. We apply <strong>Platt scaling</strong> (sigmoid calibration):</p>
 
 <p>$$P_{\text{calibrated}}(y=1 \mid x) = \frac{1}{1 + \exp(A \cdot f(x) + B)}$$</p>
 
@@ -249,28 +255,28 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <h3>5.3 Training Protocol</h3>
 
 <ol>
-<li>**Data split**: 80% training, 20% testing (stratified by class)</li>
-<li>**Base model**: Logistic regression with L2 regularization</li>
-<li>**Calibration**: 5-fold cross-validated sigmoid calibration</li>
-<li>**Evaluation**: Precision, Recall, F1-score on held-out test set</li>
+<li><strong>Data split</strong>: 80% training, 20% testing (stratified by class)</li>
+<li><strong>Base model</strong>: Logistic regression with L2 regularization</li>
+<li><strong>Calibration</strong>: 5-fold cross-validated sigmoid calibration</li>
+<li><strong>Evaluation</strong>: Precision, Recall, F1-score on held-out test set</li>
 </ol>
 
-<p>---</p>
+<hr>
 
 <h2>6. Model Performance</h2>
 
 <p>The logistic regression model, trained on 1000 samples (60% scam, 40% safe), demonstrates strong performance across multiple evaluation metrics. The model prioritizes high recall for scam detection to minimize false negatives, as missing a scam has more severe consequences than a false alarm.</p>
 
-<p>![Performance Metrics](figures/fig3_performance_metrics.png)</p>
+<figure><img src="figures/fig3_performance_metrics.png" alt="Performance Metrics" loading="lazy"></figure>
 
-<p>*Figure 3: Comprehensive performance analysis showing (left) class-wise metrics comparing precision, recall, and F1-score for safe vs scam classes, (center) confusion matrix on 1000 test samples demonstrating high accuracy, and (right) multi-dimensional performance profile via radar chart emphasizing the model&#x27;s balanced performance across all metrics.*</p>
+<p><em>Figure 3: Comprehensive performance analysis showing (left) class-wise metrics comparing precision, recall, and F1-score for safe vs scam classes, (center) confusion matrix on 1000 test samples demonstrating high accuracy, and (right) multi-dimensional performance profile via radar chart emphasizing the model&#x27;s balanced performance across all metrics.</em></p>
 
 <h3>6.1 Metrics</h3>
 
 <p>The model is evaluated using:</p>
 
 <ol>
-<li>**Precision** = $\frac{TP}{TP + FP}$</li>
+<li><strong>Precision</strong> = $\frac{TP}{TP + FP}$</li>
 </ol>
 <ul>
 <li>Proportion of predicted scams that are actually scams</li>
@@ -278,15 +284,15 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 </ul>
 
 <ol>
-<li>**Recall** = $\frac{TP}{TP + FN}$</li>
+<li><strong>Recall</strong> = $\frac{TP}{TP + FN}$</li>
 </ol>
 <ul>
 <li>Proportion of actual scams that are correctly identified</li>
-<li>**Critical for security** — missing scams is dangerous</li>
+<li><strong>Critical for security</strong> — missing scams is dangerous</li>
 </ul>
 
 <ol>
-<li>**F1-Score** = $2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$</li>
+<li><strong>F1-Score</strong> = $2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$</li>
 </ol>
 <ul>
 <li>Harmonic mean balancing both concerns</li>
@@ -296,34 +302,37 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 
 <p>On the constructed dataset (1000 samples, 60% scam, 40% safe):</p>
 
-<p>| Metric | Safe Class | Scam Class |</p>
-<p>|--------|------------|------------|</p>
-<p>| Precision | 0.98 | 0.95 |</p>
-<p>| Recall | 0.92 | 1.00 |</p>
-<p>| F1-Score | 0.95 | 0.97 |</p>
-<p>| **Support** | 400 | 600 |</p>
+<table>
+<thead><tr><th>Metric</th><th>Safe Class</th><th>Scam Class</th></tr></thead>
+<tbody>
+<tr><td>Precision</td><td>0.98</td><td>0.95</td></tr>
+<tr><td>Recall</td><td>0.92</td><td>1.00</td></tr>
+<tr><td>F1-Score</td><td>0.95</td><td>0.97</td></tr>
+<tr><td><strong>Support</strong></td><td>400</td><td>600</td></tr>
+</tbody>
+</table>
 
-<p>**Key Observation**: The model achieves **perfect recall (1.00) for scam detection**, ensuring no scams slip through, while maintaining high precision (0.95) to minimize false alarms.</p>
+<p><strong>Key Observation</strong>: The model achieves <strong>perfect recall (1.00) for scam detection</strong>, ensuring no scams slip through, while maintaining high precision (0.95) to minimize false alarms.</p>
 
 <h3>6.3 Design Philosophy</h3>
 
-<p>Given the safety-critical nature of scams, **recall for the scam class is prioritized** to minimize false negatives. In security systems:</p>
+<p>Given the safety-critical nature of scams, <strong>recall for the scam class is prioritized</strong> to minimize false negatives. In security systems:</p>
 <ul>
-<li>**False negative** (missed scam) = User loses money, credentials stolen</li>
-<li>**False positive** (safe message flagged) = Minor inconvenience</li>
+<li><strong>False negative</strong> (missed scam) = User loses money, credentials stolen</li>
+<li><strong>False positive</strong> (safe message flagged) = Minor inconvenience</li>
 </ul>
 
 <p>Thus, the system is tuned to err on the side of caution.</p>
 
-<p>---</p>
+<hr>
 
 <h2>7. Model Explainability</h2>
 
-<p>Explainability is achieved through **coefficient-based attribution**, analogous to SHAP for linear models. Every prediction can be traced back to specific feature contributions, enabling security audits and user trust.</p>
+<p>Explainability is achieved through <strong>coefficient-based attribution</strong>, analogous to SHAP for linear models. Every prediction can be traced back to specific feature contributions, enabling security audits and user trust.</p>
 
-<p>![Feature Importance](figures/fig4_feature_importance.png)</p>
+<figure><img src="figures/fig4_feature_importance.png" alt="Feature Importance" loading="lazy"></figure>
 
-<p>*Figure 4: Feature importance visualization showing logistic regression coefficients for all 16 features. Positive values (red bars) indicate scam signals that increase the likelihood of a scam classification, while negative values (green bars) indicate safety signals that decrease scam probability. The coefficients are sorted by absolute magnitude, with sensitive terms (f3) showing the strongest scam indication at +0.42.*</p>
+<p><em>Figure 4: Feature importance visualization showing logistic regression coefficients for all 16 features. Positive values (red bars) indicate scam signals that increase the likelihood of a scam classification, while negative values (green bars) indicate safety signals that decrease scam probability. The coefficients are sorted by absolute magnitude, with sensitive terms (f3) showing the strongest scam indication at +0.42.</em></p>
 
 <h3>7.1 Feature Contribution Analysis</h3>
 
@@ -331,32 +340,35 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 
 <p>$$\text{Contribution}_i = w_i \cdot x_i$$</p>
 
-<p>This allows **ranking features by influence** on the final decision.</p>
+<p>This allows <strong>ranking features by influence</strong> on the final decision.</p>
 
 <h3>7.2 Key Findings</h3>
 
 <p>From coefficient analysis on trained model:</p>
 
-<p>| Feature Category | Direction | Magnitude | Interpretation |</p>
-<p>|-----------------|-----------|-----------|----------------|</p>
-<p>| Sensitive terms (f3) | ↑↑↑ | Very High (+0.42) | Critical risk signal |</p>
-<p>| Urgency keywords (f1) | ↑↑ | High (+0.35) | Strong scam indicator |</p>
-<p>| URL shortener (f12) | ↑ | Medium (+0.28) | Suspicious pattern |</p>
-<p>| Money keywords (f2) | ↑ | Medium (+0.26) | Financial manipulation signal |</p>
-<p>| Verified domain (f15) | ↓ | Medium (-0.18) | Safety indicator |</p>
-<p>| Text length (f5) | ↓ | Low (-0.08) | Longer text slightly safer |</p>
+<table>
+<thead><tr><th>Feature Category</th><th>Direction</th><th>Magnitude</th><th>Interpretation</th></tr></thead>
+<tbody>
+<tr><td>Sensitive terms (f3)</td><td>↑↑↑</td><td>Very High (+0.42)</td><td>Critical risk signal</td></tr>
+<tr><td>Urgency keywords (f1)</td><td>↑↑</td><td>High (+0.35)</td><td>Strong scam indicator</td></tr>
+<tr><td>URL shortener (f12)</td><td>↑</td><td>Medium (+0.28)</td><td>Suspicious pattern</td></tr>
+<tr><td>Money keywords (f2)</td><td>↑</td><td>Medium (+0.26)</td><td>Financial manipulation signal</td></tr>
+<tr><td>Verified domain (f15)</td><td>↓</td><td>Medium (-0.18)</td><td>Safety indicator</td></tr>
+<tr><td>Text length (f5)</td><td>↓</td><td>Low (-0.08)</td><td>Longer text slightly safer</td></tr>
+</tbody>
+</table>
 
-<p>**Interpretation**: The model has learned that requests for sensitive information (OTP, PIN, CVV) are the strongest predictor of scams, followed by urgency language and URL obfuscation techniques.</p>
+<p><strong>Interpretation</strong>: The model has learned that requests for sensitive information (OTP, PIN, CVV) are the strongest predictor of scams, followed by urgency language and URL obfuscation techniques.</p>
 
 <h3>7.3 Explainability Example</h3>
 
-<p>**Input**: &quot;URGENT! Verify your OTP at bit.ly/verify&quot;</p>
+<p><strong>Input</strong>: &quot;URGENT! Verify your OTP at bit.ly/verify&quot;</p>
 
-<p>![Explainability Example](figures/fig7_explainability.png)</p>
+<figure><img src="figures/fig7_explainability.png" alt="Explainability Example" loading="lazy"></figure>
 
-<p>*Figure 7: Feature contribution breakdown for the message &quot;URGENT! Verify your OTP at bit.ly/verify&quot;. The waterfall chart shows how each activated feature contributes to the final scam score, starting from a base value of 0.10 and accumulating contributions: urgency keywords (+0.35), OTP request (+0.42), and URL shortener (+0.28), resulting in a final score of 0.95 that exceeds the 0.90 scam threshold.*</p>
+<p><em>Figure 7: Feature contribution breakdown for the message &quot;URGENT! Verify your OTP at bit.ly/verify&quot;. The waterfall chart shows how each activated feature contributes to the final scam score, starting from a base value of 0.10 and accumulating contributions: urgency keywords (+0.35), OTP request (+0.42), and URL shortener (+0.28), resulting in a final score of 0.95 that exceeds the 0.90 scam threshold.</em></p>
 
-<p>**Feature Activations**:</p>
+<p><strong>Feature Activations</strong>:</p>
 <ul>
 <li>f1 (urgency) = 1 → +0.35</li>
 <li>f3 (sensitive: OTP) = 1 → +0.42</li>
@@ -364,101 +376,102 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>f9 (URL count) = 1 → +0.08</li>
 <li>f6 (exclamations) = 1 → +0.05</li>
 <li>f5 (text length) = 45 → -0.02</li>
-<li>**Total score**: 0.95 (scam)</li>
+<li><strong>Total score</strong>: 0.95 (scam)</li>
 </ul>
 
-<p>**Human-Readable Reasoning**:</p>
+<p><strong>Human-Readable Reasoning</strong>:</p>
 <p>&gt; &quot;Message flagged as scam due to urgency language (35%), request for sensitive OTP (42%), and use of URL shortener (28%). Final confidence: 95%.&quot;</p>
 
-<p>This enables **auditable and human-understandable decisions**, critical for AI safety systems.</p>
+<p>This enables <strong>auditable and human-understandable decisions</strong>, critical for AI safety systems.</p>
 
-<p>---</p>
+<hr>
 
 <h2>8. Ensemble Decision Strategy</h2>
 
 <p>Final classification leverages multiple independent signals to ensure robustness and reduce single points of failure. Heuristics provide fast initial filtering, the ML model offers interpretable predictions, and the LLM validates ambiguous cases.</p>
 
-<p>![Ensemble Workflow](figures/fig5_ensemble_workflow.png)</p>
+<figure><img src="figures/fig5_ensemble_workflow.png" alt="Ensemble Workflow" loading="lazy"></figure>
 
-<p>*Figure 5: Multi-signal ensemble decision workflow showing how heuristic, ML, and LLM signals are combined to produce final verdicts. The system processes user input through three parallel paths with different latencies (&lt;1ms for heuristics, &lt;5ms for ML, ~1s for LLM), then applies conditional logic to classify messages as Safe, Suspicious, or Scam. Signal weights are 0.2 (heuristics), 0.6 (ML), and 0.2 (LLM), balancing speed, interpretability, and semantic understanding.*</p>
+<p><em>Figure 5: Multi-signal ensemble decision workflow showing how heuristic, ML, and LLM signals are combined to produce final verdicts. The system processes user input through three parallel paths with different latencies (&lt;1ms for heuristics, &lt;5ms for ML, ~1s for LLM), then applies conditional logic to classify messages as Safe, Suspicious, or Scam. Signal weights are 0.2 (heuristics), 0.6 (ML), and 0.2 (LLM), balancing speed, interpretability, and semantic understanding.</em></p>
 
 <h3>8.1 Decision Logic</h3>
 
-<p>Final classification is determined via **confidence-based aggregation**:</p>
+<p>Final classification is determined via <strong>confidence-based aggregation</strong>:</p>
 
-<p>```python</p>
-<p>if ml_score &gt; 0.90:</p>
-<p>    verdict = &quot;scam&quot;</p>
-<p>elif ml_score &lt; 0.20 and heuristic_score &lt; 30:</p>
-<p>    verdict = &quot;safe&quot;</p>
-<p>elif llm_unsafe or (ml_score &gt; 0.70 and heuristic_score &gt; 60):</p>
-<p>    verdict = &quot;scam&quot;</p>
-<p>elif ml_score &gt; 0.50 or heuristic_score &gt; 50:</p>
-<p>    verdict = &quot;suspicious&quot;  # Human review</p>
-<p>else:</p>
-<p>    verdict = &quot;safe&quot;</p>
-<p>```</p>
+<pre><code class="language-python">if ml_score &gt; 0.90:
+    verdict = &quot;scam&quot;
+elif ml_score &lt; 0.20 and heuristic_score &lt; 30:
+    verdict = &quot;safe&quot;
+elif llm_unsafe or (ml_score &gt; 0.70 and heuristic_score &gt; 60):
+    verdict = &quot;scam&quot;
+elif ml_score &gt; 0.50 or heuristic_score &gt; 50:
+    verdict = &quot;suspicious&quot;  # Human review
+else:
+    verdict = &quot;safe&quot;</code></pre>
 
 <h3>8.2 Signal Weighting</h3>
 
-<p>| Component | Latency | Cost | Interpretability | Weight |</p>
-<p>|-----------|---------|------|------------------|--------|</p>
-<p>| Heuristics | &lt;1ms | Free | High | 0.2 |</p>
-<p>| ML Model | &lt;5ms | Minimal | High | 0.6 |</p>
-<p>| LLM | ~1s | High | Low | 0.2 |</p>
+<table>
+<thead><tr><th>Component</th><th>Latency</th><th>Cost</th><th>Interpretability</th><th>Weight</th></tr></thead>
+<tbody>
+<tr><td>Heuristics</td><td>&lt;1ms</td><td>Free</td><td>High</td><td>0.2</td></tr>
+<tr><td>ML Model</td><td>&lt;5ms</td><td>Minimal</td><td>High</td><td>0.6</td></tr>
+<tr><td>LLM</td><td>~1s</td><td>High</td><td>Low</td><td>0.2</td></tr>
+</tbody>
+</table>
 
-<p>**Rationale**: The ML model receives the highest weight (0.6) as it combines interpretability with strong generalization. Heuristics provide quick filtering, while the LLM is reserved for complex, ambiguous cases.</p>
+<p><strong>Rationale</strong>: The ML model receives the highest weight (0.6) as it combines interpretability with strong generalization. Heuristics provide quick filtering, while the LLM is reserved for complex, ambiguous cases.</p>
 
 <h3>8.3 Advantages</h3>
 
 <ol>
-<li>**Robustness**: No single point of failure — if one component fails, others provide backup</li>
-<li>**Explainability**: Multiple independent signals increase confidence in decisions</li>
-<li>**Tunability**: Thresholds adjustable per use case (e.g., stricter for financial apps)</li>
-<li>**Cost efficiency**: Expensive LLM only invoked when ML confidence is ambiguous (0.4-0.6 range)</li>
+<li><strong>Robustness</strong>: No single point of failure — if one component fails, others provide backup</li>
+<li><strong>Explainability</strong>: Multiple independent signals increase confidence in decisions</li>
+<li><strong>Tunability</strong>: Thresholds adjustable per use case (e.g., stricter for financial apps)</li>
+<li><strong>Cost efficiency</strong>: Expensive LLM only invoked when ML confidence is ambiguous (0.4-0.6 range)</li>
 </ol>
 
-<p>This mirrors **industrial fraud detection pipelines**, emphasizing robustness over raw accuracy.</p>
+<p>This mirrors <strong>industrial fraud detection pipelines</strong>, emphasizing robustness over raw accuracy.</p>
 
-<p>---</p>
+<hr>
 
 <h2>9. Precision-Recall Trade-offs</h2>
 
 <p>Given the safety-critical nature of scam detection, recall for the scam class is prioritized to minimize false negatives. The system operates at high recall (1.0) while maintaining strong precision (0.95), ensuring comprehensive scam coverage without excessive false alarms.</p>
 
-<p>![Precision-Recall Analysis](figures/fig6_precision_recall.png)</p>
+<figure><img src="figures/fig6_precision_recall.png" alt="Precision-Recall Analysis" loading="lazy"></figure>
 
-<p>*Figure 6: (Left) Precision-recall curve showing model performance across different decision thresholds. The operating point (marked with red star) achieves 100% recall and 95% precision. (Right) Confidence score distribution demonstrating well-calibrated probabilistic predictions, with clear separation between safe (blue) and scam (red) messages. Decision thresholds at 0.2 (safe), 0.5 (suspicious), and 0.9 (scam) are marked.*</p>
+<p><em>Figure 6: (Left) Precision-recall curve showing model performance across different decision thresholds. The operating point (marked with red star) achieves 100% recall and 95% precision. (Right) Confidence score distribution demonstrating well-calibrated probabilistic predictions, with clear separation between safe (blue) and scam (red) messages. Decision thresholds at 0.2 (safe), 0.5 (suspicious), and 0.9 (scam) are marked.</em></p>
 
 <h3>9.1 Threshold Selection</h3>
 
-<p>The model uses **three decision thresholds**:</p>
+<p>The model uses <strong>three decision thresholds</strong>:</p>
 
 <ol>
-<li>**Safe threshold (&lt; 0.2)**: High confidence in safety — allow message</li>
-<li>**Suspicious threshold (0.5)**: Ambiguous — flag for human review</li>
-<li>**Scam threshold (&gt; 0.9)**: High confidence in scam — block/alert user</li>
+<li><strong>Safe threshold (&lt; 0.2)</strong>: High confidence in safety — allow message</li>
+<li><strong>Suspicious threshold (0.5)</strong>: Ambiguous — flag for human review</li>
+<li><strong>Scam threshold (&gt; 0.9)</strong>: High confidence in scam — block/alert user</li>
 </ol>
 
 <p>This three-tier system balances:</p>
 <ul>
-<li>**User experience**: Most messages (safe or clearly scam) are auto-classified</li>
-<li>**Human oversight**: Ambiguous cases receive manual review</li>
-<li>**Safety**: No scams slip through due to high recall</li>
+<li><strong>User experience</strong>: Most messages (safe or clearly scam) are auto-classified</li>
+<li><strong>Human oversight</strong>: Ambiguous cases receive manual review</li>
+<li><strong>Safety</strong>: No scams slip through due to high recall</li>
 </ul>
 
 <h3>9.2 Calibration Quality</h3>
 
 <p>The confidence score distribution (right panel of Figure 6) shows:</p>
 <ul>
-<li>**Clear separation** between safe and scam distributions</li>
-<li>**Well-calibrated probabilities**: Predicted scores match actual scam rates</li>
-<li>**Minimal overlap** in the ambiguous region (0.4-0.6)</li>
+<li><strong>Clear separation</strong> between safe and scam distributions</li>
+<li><strong>Well-calibrated probabilities</strong>: Predicted scores match actual scam rates</li>
+<li><strong>Minimal overlap</strong> in the ambiguous region (0.4-0.6)</li>
 </ul>
 
-<p>This indicates the model&#x27;s predictions are **trustworthy and actionable**.</p>
+<p>This indicates the model&#x27;s predictions are <strong>trustworthy and actionable</strong>.</p>
 
-<p>---</p>
+<hr>
 
 <h2>10. LLM-Based Semantic Safety Layer</h2>
 
@@ -473,7 +486,7 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 
 <h3>10.2 Proposed Integration</h3>
 
-<p>A **Llama Guard** model (or similar safety-focused LLM) is integrated as a secondary signal to capture:</p>
+<p>A <strong>Llama Guard</strong> model (or similar safety-focused LLM) is integrated as a secondary signal to capture:</p>
 <ul>
 <li>Implicit deception patterns</li>
 <li>Social engineering intent</li>
@@ -482,14 +495,14 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 
 <h3>10.3 Design Principles</h3>
 
-<p>The LLM **does not make final decisions**, but acts as a **semantic validator**, reducing blind spots. This prevents:</p>
+<p>The LLM <strong>does not make final decisions</strong>, but acts as a <strong>semantic validator</strong>, reducing blind spots. This prevents:</p>
 <ul>
 <li>Over-reliance on expensive LLM calls</li>
 <li>Inconsistent LLM behavior</li>
 <li>Lack of interpretability</li>
 </ul>
 
-<p>**Integration Strategy**:</p>
+<p><strong>Integration Strategy</strong>:</p>
 <ul>
 <li>Use ML for 90% of cases (fast, cheap, interpretable)</li>
 <li>Invoke LLM only when:</li>
@@ -498,85 +511,81 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>Novel patterns detected</li>
 </ul>
 
-<p>**Cost Analysis**:</p>
+<p><strong>Cost Analysis</strong>:</p>
 <ul>
 <li>Without LLM gating: 1000 messages × $0.001/call = $1.00</li>
 <li>With ML pre-filtering: ~100 ambiguous cases × $0.001/call = $0.10</li>
-<li>**90% cost reduction** while maintaining safety</li>
+<li><strong>90% cost reduction</strong> while maintaining safety</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>11. Deployment Architecture</h2>
 
 <h3>11.1 System Design</h3>
 
-<p>```</p>
-<p>┌─────────────────────────────────────────────┐</p>
-<p>│          Frontend / User Interface          │</p>
-<p>└──────────────────┬──────────────────────────┘</p>
-<p>                   │</p>
-<p>                   ▼</p>
-<p>┌─────────────────────────────────────────────┐</p>
-<p>│         Node.js Backend Service             │</p>
-<p>│  - Request validation                       │</p>
-<p>│  - Rate limiting                            │</p>
-<p>│  - Response formatting                      │</p>
-<p>└──────────────────┬──────────────────────────┘</p>
-<p>                   │</p>
-<p>                   ▼</p>
-<p>┌─────────────────────────────────────────────┐</p>
-<p>│      Python ML Microservice (Flask)         │</p>
-<p>│  - Feature extraction                       │</p>
-<p>│  - Model inference                          │</p>
-<p>│  - Confidence scoring                       │</p>
-<p>└──────────────────┬──────────────────────────┘</p>
-<p>                   │</p>
-<p>                   ▼</p>
-<p>┌─────────────────────────────────────────────┐</p>
-<p>│         LLM Service (Optional)              │</p>
-<p>│  - Semantic analysis                        │</p>
-<p>│  - Complex pattern detection                │</p>
-<p>└─────────────────────────────────────────────┘</p>
-<p>```</p>
+<pre><code>┌─────────────────────────────────────────────┐
+│          Frontend / User Interface          │
+└──────────────────┬──────────────────────────┘
+                   │
+                   ▼
+┌─────────────────────────────────────────────┐
+│         Node.js Backend Service             │
+│  - Request validation                       │
+│  - Rate limiting                            │
+│  - Response formatting                      │
+└──────────────────┬──────────────────────────┘
+                   │
+                   ▼
+┌─────────────────────────────────────────────┐
+│      Python ML Microservice (Flask)         │
+│  - Feature extraction                       │
+│  - Model inference                          │
+│  - Confidence scoring                       │
+└──────────────────┬──────────────────────────┘
+                   │
+                   ▼
+┌─────────────────────────────────────────────┐
+│         LLM Service (Optional)              │
+│  - Semantic analysis                        │
+│  - Complex pattern detection                │
+└─────────────────────────────────────────────┘</code></pre>
 
 <h3>11.2 Separation of Concerns</h3>
 
-<p>The ML model is deployed as a **Python microservice**, consumed by a Node.js backend. This ensures:</p>
+<p>The ML model is deployed as a <strong>Python microservice</strong>, consumed by a Node.js backend. This ensures:</p>
 
 <ol>
-<li>**Independent ML iteration** — Retrain models without touching backend</li>
-<li>**Scalable integration** — Multiple backends can consume same ML service</li>
-<li>**Realistic production constraints** — Mirrors real-world ML deployment</li>
-<li>**Technology flexibility** — Best tool for each layer</li>
+<li><strong>Independent ML iteration</strong> — Retrain models without touching backend</li>
+<li><strong>Scalable integration</strong> — Multiple backends can consume same ML service</li>
+<li><strong>Realistic production constraints</strong> — Mirrors real-world ML deployment</li>
+<li><strong>Technology flexibility</strong> — Best tool for each layer</li>
 </ol>
 
 <h3>11.3 API Contract</h3>
 
-<p>```json</p>
-<p>POST /predict</p>
-<p>{</p>
-<p>  &quot;content&quot;: &quot;URGENT! Verify account...&quot;,</p>
-<p>  &quot;manual_score&quot;: 75</p>
-<p>}</p>
+<pre><code class="language-json">POST /predict
+{
+  &quot;content&quot;: &quot;URGENT! Verify account...&quot;,
+  &quot;manual_score&quot;: 75
+}
 
-<p>Response:</p>
-<p>{</p>
-<p>  &quot;verdict&quot;: &quot;scam&quot;,</p>
-<p>  &quot;confidence&quot;: 0.94,</p>
-<p>  &quot;signals&quot;: {</p>
-<p>    &quot;ml_score&quot;: 95,</p>
-<p>    &quot;heuristic_score&quot;: 80,</p>
-<p>    &quot;llm_score&quot;: null</p>
-<p>  },</p>
-<p>  &quot;reasoning&quot;: [</p>
-<p>    {&quot;feature&quot;: &quot;urgency_keywords&quot;, &quot;contribution&quot;: 0.35},</p>
-<p>    {&quot;feature&quot;: &quot;url_shortener&quot;, &quot;contribution&quot;: 0.28}</p>
-<p>  ]</p>
-<p>}</p>
-<p>```</p>
+Response:
+{
+  &quot;verdict&quot;: &quot;scam&quot;,
+  &quot;confidence&quot;: 0.94,
+  &quot;signals&quot;: {
+    &quot;ml_score&quot;: 95,
+    &quot;heuristic_score&quot;: 80,
+    &quot;llm_score&quot;: null
+  },
+  &quot;reasoning&quot;: [
+    {&quot;feature&quot;: &quot;urgency_keywords&quot;, &quot;contribution&quot;: 0.35},
+    {&quot;feature&quot;: &quot;url_shortener&quot;, &quot;contribution&quot;: 0.28}
+  ]
+}</code></pre>
 
-<p>**Key Fields**:</p>
+<p><strong>Key Fields</strong>:</p>
 <ul>
 <li>`verdict`: Final classification (safe/suspicious/scam)</li>
 <li>`confidence`: Model&#x27;s confidence score (0-1)</li>
@@ -584,23 +593,23 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>`reasoning`: Top feature contributions for explainability</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>12. Limitations and Future Work</h2>
 
 <h3>12.1 Current Limitations</h3>
 
 <ol>
-<li>**Dataset size** (1000 samples) limits generalization claims</li>
-<li>**Linear model** restricts capturing non-linear feature interactions</li>
-<li>**Static features** may miss temporal and contextual patterns</li>
-<li>**English-only** — no multi-language support</li>
-<li>**No image analysis** for screenshot-based scams</li>
+<li><strong>Dataset size</strong> (1000 samples) limits generalization claims</li>
+<li><strong>Linear model</strong> restricts capturing non-linear feature interactions</li>
+<li><strong>Static features</strong> may miss temporal and contextual patterns</li>
+<li><strong>English-only</strong> — no multi-language support</li>
+<li><strong>No image analysis</strong> for screenshot-based scams</li>
 </ol>
 
 <h3>12.2 Future Directions</h3>
 
-<p>**Short-term**:</p>
+<p><strong>Short-term</strong>:</p>
 <ul>
 <li>Expand dataset to 10K+ samples from real-world sources</li>
 <li>Implement full SHAP value visualization</li>
@@ -608,7 +617,7 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>Cross-validation with k-fold splits</li>
 </ul>
 
-<p>**Medium-term**:</p>
+<p><strong>Medium-term</strong>:</p>
 <ul>
 <li>Gradient-boosted models (XGBoost, LightGBM)</li>
 <li>Ensemble of multiple classifiers (voting, stacking)</li>
@@ -616,7 +625,7 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>Multi-language support</li>
 </ul>
 
-<p>**Long-term**:</p>
+<p><strong>Long-term</strong>:</p>
 <ul>
 <li>Online learning pipeline for continuous model updates</li>
 <li>Graph-based features (email network analysis)</li>
@@ -624,7 +633,7 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>Adversarial robustness testing</li>
 </ul>
 
-<p>**Research directions**:</p>
+<p><strong>Research directions</strong>:</p>
 <ul>
 <li>Formal SHAP analysis for instance-level explanations</li>
 <li>Counterfactual explanations (&quot;if you removed X, verdict would change&quot;)</li>
@@ -632,77 +641,75 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <li>Transfer learning from pre-trained security models</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>13. Conclusion</h2>
 
-<p>This work demonstrates that **interpretable machine learning**, when integrated with LLM safety models and heuristics, can form a **practical and auditable scam detection system**. Rather than maximizing raw accuracy, the system prioritizes:</p>
+<p>This work demonstrates that <strong>interpretable machine learning</strong>, when integrated with LLM safety models and heuristics, can form a <strong>practical and auditable scam detection system</strong>. Rather than maximizing raw accuracy, the system prioritizes:</p>
 
 <ol>
-<li>**Explainability** — Every decision is traceable to specific features</li>
-<li>**Safety** — High recall prevents dangerous false negatives</li>
-<li>**Deployment realism** — Microservice architecture, cost awareness</li>
-<li>**Robustness** — Multi-signal validation reduces single points of failure</li>
+<li><strong>Explainability</strong> — Every decision is traceable to specific features</li>
+<li><strong>Safety</strong> — High recall prevents dangerous false negatives</li>
+<li><strong>Deployment realism</strong> — Microservice architecture, cost awareness</li>
+<li><strong>Robustness</strong> — Multi-signal validation reduces single points of failure</li>
 </ol>
 
-<p>The approach aligns with **real-world AI security requirements** where interpretability and trust are as important as performance metrics.</p>
+<p>The approach aligns with <strong>real-world AI security requirements</strong> where interpretability and trust are as important as performance metrics.</p>
 
 <h3>13.1 Key Takeaways</h3>
 
 <ul>
-<li>**Feature engineering &gt; black-box models** for limited data regimes</li>
-<li>**Linear models** provide sufficient performance with superior interpretability</li>
-<li>**Ensemble strategies** offer robustness without over-reliance on any component</li>
-<li>**Production-oriented design** from day one enables real deployment</li>
+<li><strong>Feature engineering &gt; black-box models</strong> for limited data regimes</li>
+<li><strong>Linear models</strong> provide sufficient performance with superior interpretability</li>
+<li><strong>Ensemble strategies</strong> offer robustness without over-reliance on any component</li>
+<li><strong>Production-oriented design</strong> from day one enables real deployment</li>
 </ul>
 
-<p>---</p>
+<hr>
 
 <h2>14. References</h2>
 
 <ol>
-<li>**Fette, I., Sadeh, N., &amp; Tomasic, A.** (2007). Learning to detect phishing emails. *WWW 2007*.</li>
-<li>**Lundberg, S. M., &amp; Lee, S. I.** (2017). A unified approach to interpreting model predictions (SHAP). *NeurIPS 2017*.</li>
-<li>**Ribeiro, M. T., Singh, S., &amp; Guestrin, C.** (2016). &quot;Why should I trust you?&quot;: Explaining predictions of any classifier. *KDD 2016*.</li>
-<li>**Iyer, R., Li, Y., Li, H., et al.** (2023). Llama Guard: LLM-based input-output safeguard for human-AI conversations. *arXiv:2312.06674*.</li>
-<li>**Platt, J.** (1999). Probabilistic outputs for support vector machines. *Advances in Large Margin Classifiers*.</li>
+<li><strong>Fette, I., Sadeh, N., &amp; Tomasic, A.</strong> (2007). Learning to detect phishing emails. <em>WWW 2007</em>.</li>
+<li><strong>Lundberg, S. M., &amp; Lee, S. I.</strong> (2017). A unified approach to interpreting model predictions (SHAP). <em>NeurIPS 2017</em>.</li>
+<li><strong>Ribeiro, M. T., Singh, S., &amp; Guestrin, C.</strong> (2016). &quot;Why should I trust you?&quot;: Explaining predictions of any classifier. <em>KDD 2016</em>.</li>
+<li><strong>Iyer, R., Li, Y., Li, H., et al.</strong> (2023). Llama Guard: LLM-based input-output safeguard for human-AI conversations. <em>arXiv:2312.06674</em>.</li>
+<li><strong>Platt, J.</strong> (1999). Probabilistic outputs for support vector machines. <em>Advances in Large Margin Classifiers</em>.</li>
 </ol>
 
-<p>---</p>
+<hr>
 
 <h2>Appendices</h2>
 
 <h3>Appendix A: Feature Extraction Pseudocode</h3>
 
-<p>```python</p>
-<p>def extract_features(text, manual_score):</p>
-<p>    features = []</p>
+<pre><code class="language-python">def extract_features(text, manual_score):
+    features = []
 
-<p>    # Text features</p>
-<p>    features.append(has_urgency_keywords(text))</p>
-<p>    features.append(has_money_keywords(text))</p>
-<p>    features.append(has_sensitive_terms(text))</p>
-<p>    features.append(has_offplatform_contact(text))</p>
-<p>    features.append(len(text))</p>
-<p>    features.append(count_exclamations(text))</p>
-<p>    features.append(uppercase_ratio(text))</p>
-<p>    features.append(digit_ratio(text))</p>
+    # Text features
+    features.append(has_urgency_keywords(text))
+    features.append(has_money_keywords(text))
+    features.append(has_sensitive_terms(text))
+    features.append(has_offplatform_contact(text))
+    features.append(len(text))
+    features.append(count_exclamations(text))
+    features.append(uppercase_ratio(text))
+    features.append(digit_ratio(text))
 
-<p>    # URL features</p>
-<p>    urls = extract_urls(text)</p>
-<p>    features.append(len(urls))</p>
-<p>    features.append(url_to_word_ratio(text, urls))</p>
-<p>    features.append(has_ip_url(urls))</p>
-<p>    features.append(has_url_shortener(urls))</p>
-<p>    features.append(has_risky_tld(urls))</p>
-<p>    features.append(has_domain_spoofing(urls))</p>
-<p>    features.append(has_verified_domain(urls))</p>
+    # URL features
+    urls = extract_urls(text)
+    features.append(len(urls))
+    features.append(url_to_word_ratio(text, urls))
+    features.append(has_ip_url(urls))
+    features.append(has_url_shortener(urls))
+    features.append(has_risky_tld(urls))
+    features.append(has_domain_spoofing(urls))
+    features.append(has_verified_domain(urls))
 
-<p>    # Heuristic score (capped)</p>
-<p>    features.append(clamp(manual_score, -20, 20))</p>
+    # Heuristic score (capped)
+    features.append(clamp(manual_score, -20, 20))
 
-<p>    return features</p>
-<p>```</p>
+    return features</code></pre>
 
 <h3>Appendix B: Deployment Checklist</h3>
 
@@ -722,48 +729,48 @@ main{max-width:1000px;margin:0 auto;padding:2rem 1.2rem 3rem} .hero{border:1px s
 <h3>Appendix C: All Figures</h3>
 
 <p>#### Figure 1: System Architecture</p>
-<p>![System Architecture](figures/fig1_system_architecture.png)</p>
+<figure><img src="figures/fig1_system_architecture.png" alt="System Architecture" loading="lazy"></figure>
 
 <p>#### Figure 2: Feature Engineering Pipeline</p>
-<p>![Feature Pipeline](figures/fig2_feature_pipeline.png)</p>
+<figure><img src="figures/fig2_feature_pipeline.png" alt="Feature Pipeline" loading="lazy"></figure>
 
 <p>#### Figure 3: Performance Metrics</p>
-<p>![Performance Metrics](figures/fig3_performance_metrics.png)</p>
+<figure><img src="figures/fig3_performance_metrics.png" alt="Performance Metrics" loading="lazy"></figure>
 
 <p>#### Figure 4: Feature Importance</p>
-<p>![Feature Importance](figures/fig4_feature_importance.png)</p>
+<figure><img src="figures/fig4_feature_importance.png" alt="Feature Importance" loading="lazy"></figure>
 
 <p>#### Figure 5: Ensemble Workflow</p>
-<p>![Ensemble Workflow](figures/fig5_ensemble_workflow.png)</p>
+<figure><img src="figures/fig5_ensemble_workflow.png" alt="Ensemble Workflow" loading="lazy"></figure>
 
 <p>#### Figure 6: Precision-Recall Analysis</p>
-<p>![Precision-Recall](figures/fig6_precision_recall.png)</p>
+<figure><img src="figures/fig6_precision_recall.png" alt="Precision-Recall" loading="lazy"></figure>
 
 <p>#### Figure 7: Explainability Example</p>
-<p>![Explainability](figures/fig7_explainability.png)</p>
+<figure><img src="figures/fig7_explainability.png" alt="Explainability" loading="lazy"></figure>
 
 <p>#### Figure 8: Graphical Abstract</p>
-<p>![Graphical Abstract](figures/fig8_graphical_abstract.png)</p>
+<figure><img src="figures/fig8_graphical_abstract.png" alt="Graphical Abstract" loading="lazy"></figure>
 
-<p>---</p>
+<hr>
 
-<p>**For MBZUAI / Research Presentation**:</p>
+<p><strong>For MBZUAI / Research Presentation</strong>:</p>
 
-<p>&gt; &quot;I focused on **interpretable ML for security**. I designed explicit features, trained a linear classifier, analyzed feature contributions, and embedded the model into a multi-signal safety system rather than treating ML as a black box. The emphasis is on explainability, precision-recall trade-offs, and production-ready deployment — demonstrating end-to-end ML ownership, not just API usage.&quot;</p>
+<p>&gt; &quot;I focused on <strong>interpretable ML for security</strong>. I designed explicit features, trained a linear classifier, analyzed feature contributions, and embedded the model into a multi-signal safety system rather than treating ML as a black box. The emphasis is on explainability, precision-recall trade-offs, and production-ready deployment — demonstrating end-to-end ML ownership, not just API usage.&quot;</p>
 
-<p>---</p>
+<hr>
 
-<p>**End of Paper**</p>
+<p><strong>End of Paper</strong></p>
 
-<p>---</p>
+<hr>
 
 <h2>Document Metadata</h2>
 
-<p>**Created**: February 11, 2026  </p>
-<p>**Format**: Markdown with embedded PNG visualizations  </p>
-<p>**Figures**: 8 high-resolution (300 DPI) images  </p>
-<p>**Total Size**: ~2.5 MB with images  </p>
-<p>**License**: All figures created with Matplotlib/Seaborn (open-source)  </p>
-<p>**Reproducibility**: All figures can be regenerated using `generate_figures.py`</p></article>
+<p><strong>Created</strong>: February 11, 2026  </p>
+<p><strong>Format</strong>: Markdown with embedded PNG visualizations  </p>
+<p><strong>Figures</strong>: 8 high-resolution (300 DPI) images  </p>
+<p><strong>Total Size</strong>: ~2.5 MB with images  </p>
+<p><strong>License</strong>: All figures created with Matplotlib/Seaborn (open-source)  </p>
+<p><strong>Reproducibility</strong>: All figures can be regenerated using `generate_figures.py`</p></article>
 </main>
 </body></html>
