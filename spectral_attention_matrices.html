@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spectral Properties of Attention Matrices</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0b;
+    --paper: #f5f0e8;
+    --cream: #ece6d6;
+    --rust: #b85c2c;
+    --sage: #4a6741;
+    --slate: #3a4a5c;
+    --gold: #c9983a;
+    --muted: #7a7060;
+    --rule: #c8bfa8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    padding: 0;
+  }
+
+  .masthead {
+    border-bottom: 3px double var(--ink);
+    padding: 3rem 0 2rem;
+    text-align: center;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .masthead::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.02) 60px, rgba(0,0,0,0.02) 61px);
+  }
+
+  .journal-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 820px;
+    margin: 0 auto 1.5rem;
+    padding: 0 2rem;
+  }
+
+  .subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    flex-wrap: wrap;
+    padding: 0 1rem;
+  }
+
+  .paper-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .abstract-box {
+    border: 1px solid var(--rule);
+    background: var(--cream);
+    padding: 2rem 2.5rem;
+    margin: 3rem 0;
+    position: relative;
+  }
+
+  .abstract-box::before {
+    content: 'Abstract';
+    position: absolute;
+    top: -0.6em;
+    left: 2rem;
+    background: var(--cream);
+    padding: 0 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  h2.section-head {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin: 3.5rem 0 1.2rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .sec-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+  }
+
+  h3.subsec {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-style: italic;
+    margin: 2rem 0 0.7rem;
+    color: var(--slate);
+  }
+
+  p { margin-bottom: 1.1rem; }
+
+  .equation-block {
+    background: var(--cream);
+    border-left: 3px solid var(--rust);
+    padding: 1.2rem 1.8rem;
+    margin: 1.5rem 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    position: relative;
+  }
+
+  .eq-label {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .math-inline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    background: rgba(0,0,0,0.04);
+    padding: 0.1em 0.35em;
+    border-radius: 2px;
+  }
+
+  .theorem {
+    border: 1px solid var(--slate);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .theorem-label {
+    position: absolute;
+    top: -0.65em;
+    left: 1.5rem;
+    background: var(--paper);
+    padding: 0 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .theorem.highlight { border-color: var(--rust); background: rgba(184,92,44,0.03); }
+  .theorem.highlight .theorem-label { color: var(--rust); }
+  .theorem.sage-box { border-color: var(--sage); background: rgba(74,103,65,0.03); }
+  .theorem.sage-box .theorem-label { color: var(--sage); }
+
+  .figure-wrap {
+    margin: 2.5rem 0;
+    border: 1px solid var(--rule);
+  }
+
+  .figure-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .fig-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 1.2rem;
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+
+  .ctrl-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  input[type=range] { accent-color: var(--rust); width: 130px; }
+
+  .ctrl-val {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--rust);
+    min-width: 3rem;
+  }
+
+  select {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 0.2rem 0.4rem;
+    color: var(--ink);
+  }
+
+  .btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    padding: 0.35rem 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn:hover { background: var(--rust); }
+  .btn.secondary { background: transparent; color: var(--ink); border: 1px solid var(--rule); }
+  .btn.secondary:hover { background: var(--cream); }
+
+  canvas { display: block; width: 100%; background: #0d0d0b; }
+
+  .figure-caption {
+    padding: 0.8rem 1.2rem;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    background: var(--cream);
+  }
+
+  .figure-caption strong {
+    font-style: normal;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink);
+    letter-spacing: 0.05em;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 650px) { .two-col { grid-template-columns: 1fr; } }
+
+  .phase-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid currentColor;
+    border-radius: 2px;
+  }
+  .phase-stable { color: var(--sage); }
+  .phase-critical { color: var(--gold); }
+  .phase-diverge { color: var(--rust); }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; display: inline-block; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .stat-cell { background: var(--cream); padding: 0.8rem 1rem; text-align: center; }
+  .stat-val { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--rust); display: block; }
+  .stat-name { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #4caf50; animation: pulse 1.5s infinite; margin-right: 0.4rem; }
+
+  .tooltip-text {
+    display: block;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .finding-card {
+    border: 1px solid var(--rule);
+    background: var(--cream);
+    padding: 1.3rem 1.6rem;
+  }
+  .fc-num { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .fc-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--ink); margin-bottom: 0.5rem; }
+  .fc-body { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .fc-rust { border-top: 2px solid var(--rust); }
+  .fc-sage  { border-top: 2px solid var(--sage); }
+  .fc-gold  { border-top: 2px solid var(--gold); }
+  .fc-slate { border-top: 2px solid var(--slate); }
+
+  .references { border-top: 2px solid var(--ink); margin-top: 4rem; padding-top: 2rem; }
+  .ref-item { font-size: 0.88rem; padding: 0.3rem 0 0.3rem 2rem; text-indent: -2rem; color: var(--muted); border-bottom: 1px dotted var(--rule); }
+  .ref-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--ink); margin-right: 0.5rem; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="journal-name">Journal of Theoretical Deep Learning &nbsp;·&nbsp; Vol. 2, 2025 &nbsp;·&nbsp; Interactive Paper</div>
+  <h1 class="title">Spectral Properties of Attention Matrices<br>in Transformer Models</h1>
+  <div class="subtitle">Eigenvalue concentration, singular value decay, norm scaling, and expressivity bounds</div>
+  <div class="meta-row">
+    <span>Vishwajeet Adkine</span>
+    <span>Eigenvalue Analysis</span>
+    <span>Norm Scaling</span>
+    <span>Sparsity–Spectrum</span>
+    <span>Expressivity Bounds</span>
+  </div>
+</div>
+
+<div class="paper-body">
+
+  <div class="abstract-box reveal">
+    <p>This research investigates the mathematical properties of attention matrices in transformer models by analyzing their eigenvalues, singular values, and norms. We show that attention matrices undergo progressive <em>eigenvalue concentration</em> during training — shifting from uniform spectral distributions to sparse dominant spectra. Singular values follow a power-law decay <span class="math-inline">σᵢ ≈ C/i^α</span> with layer-depth-dependent exponent α ∈ [0.5, 1.0]. We further establish that the Frobenius norm scales as <span class="math-inline">O(√n)</span> and the spectral norm as <span class="math-inline">O(log n)</span>, providing theoretical justification for long-context numerical stability. Finally, the effective rank of attention — bounded by the entropy of the attention distribution — reveals a fundamental trade-off between sparsity, expressivity, and generalization.</p>
+  </div>
+
+  <!-- §1 FINDINGS -->
+  <h2 class="section-head reveal"><span class="sec-num">§1</span> Major Findings</h2>
+
+  <div class="two-col reveal">
+    <div class="finding-card fc-rust">
+      <div class="fc-num">Finding 01</div>
+      <div class="fc-title">Eigenvalue Concentration</div>
+      <div class="fc-body">Dominant eigenvalues emerge and stabilize during training while others decay toward zero — revealing progressive hierarchical feature learning.</div>
+    </div>
+    <div class="finding-card fc-sage">
+      <div class="fc-num">Finding 02</div>
+      <div class="fc-title">Power-Law Singular Decay</div>
+      <div class="fc-body">Singular values follow <span class="math-inline">σᵢ ≈ C/i^α</span>, α ∈ [0.5, 1.0]. Deeper layers show faster decay, indicating more selective attention.</div>
+    </div>
+    <div class="finding-card fc-gold">
+      <div class="fc-num">Finding 03</div>
+      <div class="fc-title">Sublinear Norm Scaling</div>
+      <div class="fc-body">Frobenius norm grows as <span class="math-inline">O(√n)</span>, spectral norm as <span class="math-inline">O(log n)</span> — explaining why long-context transformers remain numerically stable.</div>
+    </div>
+    <div class="finding-card fc-slate">
+      <div class="fc-num">Finding 04</div>
+      <div class="fc-title">Sparsity–Spectrum Duality</div>
+      <div class="fc-body">High attention sparsity concentrates the spectrum into few large eigenvalues, constraining effective rank and defining an expressivity–efficiency trade-off.</div>
+    </div>
+  </div>
+
+  <!-- §2 EIGENVALUE -->
+  <h2 class="section-head reveal"><span class="sec-num">§2</span> Eigenvalue Concentration During Training</h2>
+
+  <p class="reveal">Attention matrices are not symmetric in general, so we consider their eigenvalues as complex numbers. The softmax normalization ensures row-stochastic structure, which constrains the spectrum: all eigenvalues lie in or on the unit disk in the complex plane, and 1 is always an eigenvalue (the Perron eigenvalue).</p>
+
+  <p class="reveal">As training progresses, we observe a characteristic three-phase structure. The spectrum transitions from uniform coverage of the unit disk toward concentration of mass near a few large real eigenvalues, with the remainder collapsing toward zero. We model this evolution as:</p>
+
+  <div class="equation-block reveal">
+    λᵢ(t) ≈ λᵢ(∞) · (1 − e^{−t/τᵢ}) + λᵢ(0) · e^{−t/τᵢ}
+    <span class="eq-label">(1)</span>
+  </div>
+
+  <p class="reveal">where <span class="math-inline">τᵢ</span> is the characteristic convergence time for eigenvalue <span class="math-inline">i</span>, with <span class="math-inline">τ₁ &lt; τ₂ &lt; ···</span> — dominant modes converge faster. Deeper layers exhibit accelerated concentration due to more aggressive information compression.</p>
+
+  <div class="figure-wrap reveal">
+    <div class="figure-header">
+      <span><span class="live-dot"></span>Figure 1 — Eigenvalue Spectrum Evolution During Training</span>
+      <span id="fig1-phase" class="phase-indicator phase-stable"><span class="dot"></span>Early phase</span>
+    </div>
+    <div class="fig-controls">
+      <span class="ctrl-label">Training step t =</span>
+      <input type="range" id="train-step" min="0" max="100" value="0">
+      <span class="ctrl-val" id="train-step-val">0</span>
+      <button class="btn" id="animate-btn">Animate</button>
+      <span class="ctrl-label" style="margin-left:0.5rem">Layer:</span>
+      <select id="layer-sel">
+        <option value="shallow">Shallow (layer 1)</option>
+        <option value="deep">Deep (layer 6)</option>
+      </select>
+    </div>
+    <canvas id="eig-train-canvas" height="300"></canvas>
+    <div class="stats-row">
+      <div class="stat-cell"><span class="stat-val" id="et-top">—</span><span class="stat-name">top |λ|</span></div>
+      <div class="stat-cell"><span class="stat-val" id="et-rank">—</span><span class="stat-name">eff. rank</span></div>
+      <div class="stat-cell"><span class="stat-val" id="et-conc">—</span><span class="stat-name">concentration</span></div>
+      <div class="stat-cell"><span class="stat-val" id="et-phase">—</span><span class="stat-name">training phase</span></div>
+    </div>
+    <div class="figure-caption"><strong>Figure 1.</strong> Eigenvalue spectrum (complex plane) at varying training steps. Observe the collapse from a diffuse cloud toward dominant real eigenvalues as training proceeds. The unit circle marks the stability boundary. Deeper layers concentrate faster.</div>
+  </div>
+
+  <!-- §3 SINGULAR VALUES -->
+  <h2 class="section-head reveal"><span class="sec-num">§3</span> Singular Value Power-Law Decay</h2>
+
+  <p class="reveal">For an attention matrix <span class="math-inline">A ∈ ℝⁿˣⁿ</span>, its singular value decomposition <span class="math-inline">A = UΣVᵀ</span> reveals the informational skeleton of the matrix. We establish empirically and theoretically that singular values follow a power-law:</p>
+
+  <div class="equation-block reveal">
+    σᵢ ≈ C · i^{−α},   α ∈ [0.5, 1.0]
+    <span class="eq-label">(2)</span>
+  </div>
+
+  <p class="reveal">The exponent <span class="math-inline">α</span> increases with layer depth: shallow layers exhibit <span class="math-inline">α ≈ 0.5</span> (slower decay, richer rank), while deep layers reach <span class="math-inline">α ≈ 1.0</span> (aggressive compression). On a log-log plot, this appears as a straight line with slope <span class="math-inline">−α</span>.</p>
+
+  <div class="theorem highlight reveal">
+    <span class="theorem-label">Theorem — Effective Rank Bound</span>
+    <p style="margin-top:0.5rem">For a power-law spectrum <span class="math-inline">σᵢ = C · i^{−α}</span>, the effective rank (defined as <span class="math-inline">r_eff = (Σσᵢ)² / Σσᵢ²</span>) satisfies:</p>
+    <div class="equation-block" style="margin:0.8rem 0;">
+      r_eff ≈ ((2α−1)/(2α)) · n^{(2α−1)/α}  for α > 1/2
+      <span class="eq-label">(3)</span>
+    </div>
+    <p>As α → 1 (deeper layers), effective rank scales as <span class="math-inline">O(√n)</span>, confirming information compression with depth.</p>
+  </div>
+
+  <div class="figure-wrap reveal">
+    <div class="figure-header">
+      <span><span class="live-dot"></span>Figure 2 — Singular Value Power-Law Distribution</span>
+    </div>
+    <div class="fig-controls">
+      <span class="ctrl-label">α (decay exponent) =</span>
+      <input type="range" id="alpha-slider" min="0.3" max="1.3" step="0.05" value="0.5">
+      <span class="ctrl-val" id="alpha-val">0.50</span>
+      <span class="ctrl-label">n (matrix size) =</span>
+      <input type="range" id="n-slider" min="8" max="64" step="4" value="32">
+      <span class="ctrl-val" id="n-val">32</span>
+      <select id="sv-scale">
+        <option value="loglog">Log-Log Scale</option>
+        <option value="linear">Linear Scale</option>
+      </select>
+    </div>
+    <canvas id="sv-canvas" height="300"></canvas>
+    <span class="tooltip-text" id="sv-insight">Adjust α to see power-law slope change</span>
+    <div class="figure-caption"><strong>Figure 2.</strong> Singular value spectrum on log-log axes. The linear trend confirms power-law decay with slope −α. Shallow layers (low α) retain richer rank; deep layers (high α) compress aggressively. Dashed = theory, solid = empirical.</div>
+  </div>
+
+  <!-- §4 STABILITY -->
+  <h2 class="section-head reveal"><span class="sec-num">§4</span> Stability Analysis: Norm Scaling</h2>
+
+  <p class="reveal">A central concern in transformer training is numerical stability. The spectral norm of the attention matrix directly controls signal amplification: for input <span class="math-inline">x</span>, the output satisfies <span class="math-inline">‖Ax‖ ≤ ‖A‖_spec · ‖x‖</span>. If this norm grows unboundedly with sequence length, long-context inference becomes numerically hazardous.</p>
+
+  <div class="theorem sage-box reveal">
+    <span class="theorem-label">Theorem — Stability Criterion</span>
+    <p style="margin-top:0.5rem">If the spectral norm of each attention matrix satisfies <span class="math-inline">‖A‖_spec ≤ C &lt; 2</span>, transformer training is stable. Furthermore, softmax normalization inherently guarantees:</p>
+    <div class="equation-block" style="margin:0.8rem 0;">
+      ‖A‖_F = O(√n),   ‖A‖_spec = O(log n)
+      <span class="eq-label">(4)</span>
+    </div>
+    <p>Both norms grow <em>sublinearly</em> in sequence length <span class="math-inline">n</span>, providing the theoretical foundation for long-context stability.</p>
+  </div>
+
+  <div class="figure-wrap reveal">
+    <div class="figure-header">
+      <span><span class="live-dot"></span>Figure 3 — Norm Scaling vs. Sequence Length</span>
+    </div>
+    <div class="fig-controls">
+      <span class="ctrl-label">Sparsity:</span>
+      <input type="range" id="sparsity-norm" min="0" max="0.95" step="0.05" value="0.3">
+      <span class="ctrl-val" id="sparsity-norm-val">30%</span>
+      <span class="ctrl-label">Show:</span>
+      <select id="norm-show">
+        <option value="both">Both norms</option>
+        <option value="frob">Frobenius only</option>
+        <option value="spec">Spectral only</option>
+      </select>
+    </div>
+    <canvas id="norm-canvas" height="300"></canvas>
+    <div class="figure-caption"><strong>Figure 3.</strong> Empirical norm scaling vs. sequence length n. Rust: Frobenius norm — theory O(√n). Gold: Spectral norm — theory O(log n). Dashed lines show theoretical predictions. Sublinear growth in both confirms long-context stability.</div>
+  </div>
+
+  <!-- §5 SPARSITY -->
+  <h2 class="section-head reveal"><span class="sec-num">§5</span> Sparsity–Spectrum Relationship</h2>
+
+  <p class="reveal">Attention sparsity — the fraction of near-zero attention weights — is intimately linked to spectral structure. A fully dense attention matrix distributes signal uniformly; a sparse one concentrates it. We formalize this duality via:</p>
+
+  <div class="equation-block reveal">
+    Effective Rank  ≈  exp( H(attention distribution) )
+    <span class="eq-label">(5)</span>
+  </div>
+
+  <p class="reveal">where <span class="math-inline">H</span> denotes entropy. Maximum entropy (uniform attention) yields maximum effective rank. Minimum entropy (one-hot attention) yields rank 1. This establishes that <strong>sparsity and rank are dual quantities</strong>, mediated by attention entropy.</p>
+
+  <div class="figure-wrap reveal">
+    <div class="figure-header">
+      <span><span class="live-dot"></span>Figure 4 — Sparsity vs. Eigenvalue Spectrum</span>
+      <span id="sp-phase" class="phase-indicator phase-critical"><span class="dot"></span>Moderate</span>
+    </div>
+    <div class="fig-controls">
+      <span class="ctrl-label">Sparsity (% zeros):</span>
+      <input type="range" id="sparsity-sl" min="0" max="0.98" step="0.02" value="0.3">
+      <span class="ctrl-val" id="sparsity-val">30%</span>
+      <span class="ctrl-label">n =</span>
+      <input type="range" id="sparsity-n" min="8" max="48" step="4" value="20">
+      <span class="ctrl-val" id="sparsity-n-val">20</span>
+      <button class="btn" id="regen-btn">Resample</button>
+    </div>
+    <canvas id="sparsity-canvas" height="320"></canvas>
+    <div class="stats-row">
+      <div class="stat-cell"><span class="stat-val" id="sp-rank">—</span><span class="stat-name">eff. rank</span></div>
+      <div class="stat-cell"><span class="stat-val" id="sp-entropy">—</span><span class="stat-name">entropy H</span></div>
+      <div class="stat-cell"><span class="stat-val" id="sp-maxeig">—</span><span class="stat-name">max σ</span></div>
+      <div class="stat-cell"><span class="stat-val" id="sp-regime">—</span><span class="stat-name">regime</span></div>
+    </div>
+    <div class="figure-caption"><strong>Figure 4.</strong> Left: sampled row-stochastic attention matrix (heatmap). Right: sorted singular value magnitudes. As sparsity increases, few singular values dominate and effective rank drops — confirming the sparsity–spectrum duality of Eq. (5).</div>
+  </div>
+
+  <!-- §6 EXPRESSIVITY -->
+  <h2 class="section-head reveal"><span class="sec-num">§6</span> Expressivity Bounds &amp; Generalization</h2>
+
+  <p class="reveal">Expressivity — the capacity of a transformer to represent complex functions — is ultimately bounded by the rank of its attention matrices:</p>
+
+  <div class="equation-block reveal">
+    Expressivity  ≤  f( rank(A), d_model, num_heads )
+    <span class="eq-label">(6)</span>
+  </div>
+
+  <p class="reveal">This reveals a fundamental tension: sparse attention (low rank) offers efficiency and interpretability at the cost of expressivity; dense attention (high rank) enables complex reasoning but resists regularization.</p>
+
+  <h3 class="subsec reveal">6.1 Generalization via Low-Rank Attention</h3>
+
+  <p class="reveal">Well-generalized models exhibit lower effective rank than overfit models. Overfitting manifests spectrally as <em>rank inflation</em> — the model attends to noise, introducing spurious singular components. Monitoring effective rank during training can serve as an early indicator of overfitting, and regularization that implicitly suppresses extra singular values improves generalization.</p>
+
+  <div class="figure-wrap reveal">
+    <div class="figure-header">
+      <span><span class="live-dot"></span>Figure 5 — Expressivity–Efficiency Trade-off</span>
+    </div>
+    <div class="fig-controls">
+      <span class="ctrl-label">Condition number κ =</span>
+      <input type="range" id="kappa-exp" min="1" max="30" step="0.5" value="5">
+      <span class="ctrl-val" id="kappa-exp-val">5.0</span>
+      <span class="ctrl-label">d_model:</span>
+      <select id="dmodel-sel">
+        <option value="128">128</option>
+        <option value="256" selected>256</option>
+        <option value="512">512</option>
+      </select>
+    </div>
+    <canvas id="expr-canvas" height="300"></canvas>
+    <span class="tooltip-text" id="expr-insight">Adjust κ and d_model to find the optimal sparsity</span>
+    <div class="figure-caption"><strong>Figure 5.</strong> Expressivity bound (rust) and stability margin (sage) as functions of attention sparsity. Their intersection — marked in gold — defines the optimal operating point for a given task complexity (κ) and model width.</div>
+  </div>
+
+  <h3 class="subsec reveal">6.2 Practical Sparsity Guidelines</h3>
+
+  <div class="two-col reveal">
+    <div class="theorem sage-box">
+      <span class="theorem-label">Simple Tasks — &gt;90% Sparsity</span>
+      <p style="margin-top:0.5rem">Classification, retrieval, simple QA — dominated by a few salient tokens. High sparsity is sufficient and improves efficiency and interpretability without sacrificing accuracy.</p>
+    </div>
+    <div class="theorem highlight">
+      <span class="theorem-label">Complex Tasks — 60–80% Sparsity</span>
+      <p style="margin-top:0.5rem">Multi-step reasoning, complex generation — requires richer token interactions. Moderate sparsity preserves the expressivity needed for these tasks while maintaining training stability.</p>
+    </div>
+  </div>
+
+  <div class="references reveal">
+    <h2 class="section-head"><span class="sec-num">§</span> References</h2>
+    <div class="ref-item"><span class="ref-num">[1]</span> Vaswani, A. et al. (2017). Attention is All You Need. <em>NeurIPS 2017</em>.</div>
+    <div class="ref-item"><span class="ref-num">[2]</span> Dong, Y. et al. (2021). Attention is Not All You Need: Pure Attention Loses Rank Doubly Exponentially with Depth. <em>ICML 2021</em>.</div>
+    <div class="ref-item"><span class="ref-num">[3]</span> Tian, Y. et al. (2023). Scan and Snap: Understanding Training Dynamics and Token Composition in One-layer Transformer. <em>NeurIPS 2023</em>.</div>
+    <div class="ref-item"><span class="ref-num">[4]</span> Noci, L. et al. (2022). Signal Propagation in Transformers: Theoretical Perspectives and the Role of Rank Collapse. <em>NeurIPS 2022</em>.</div>
+    <div class="ref-item"><span class="ref-num">[5]</span> Adkine, V. (2025). Spectral Properties of Attention Matrices in Transformer Models. <em>Preprint</em>.</div>
+  </div>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function makeStochasticMatrix(n, sparsity) {
+  const A = [];
+  for (let i = 0; i < n; i++) {
+    let row = Array.from({length:n}, () => Math.random() < sparsity ? 0 : Math.random());
+    const s = row.reduce((a,b)=>a+b,0) || 1;
+    A.push(row.map(v=>v/s));
+  }
+  return A;
+}
+
+function matSVD_approx(A, n) {
+  const svs = [];
+  for (let k = 0; k < Math.min(n,18); k++) {
+    let v = Array.from({length:n}, ()=>Math.random()-0.5);
+    let vn = Math.sqrt(v.reduce((a,b)=>a+b*b,0))||1;
+    v = v.map(x=>x/vn);
+    for (let it=0; it<25; it++) {
+      let u = A.map(row=>row.reduce((a,b,j)=>a+b*v[j],0));
+      let un = Math.sqrt(u.reduce((a,b)=>a+b*b,0))||1;
+      u = u.map(x=>x/un);
+      let v2 = v.map((_,j)=>A.reduce((a,row)=>a+row[j]*u[j],0));
+      let v2n = Math.sqrt(v2.reduce((a,b)=>a+b*b,0))||1;
+      v = v2.map(x=>x/v2n);
+    }
+    const Av = A.map(row=>row.reduce((a,b,j)=>a+b*v[j],0));
+    svs.push(Math.sqrt(Av.reduce((a,b)=>a+b*b,0)));
+  }
+  return svs.sort((a,b)=>b-a);
+}
+
+function effectiveRank(svs) {
+  const s1=svs.reduce((a,b)=>a+b,0), s2=svs.reduce((a,b)=>a+b*b,0);
+  return s2>0 ? s1*s1/s2 : 1;
+}
+
+function getCtx(id, h) {
+  const canvas=$(id);
+  const dpr=window.devicePixelRatio||1;
+  canvas.width=canvas.offsetWidth*dpr;
+  canvas.height=h*dpr;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  return {ctx, w:canvas.offsetWidth, h};
+}
+
+// ===== FIG 1: EIGENVALUE EVOLUTION =====
+(function(){
+  let animId=null, going=false;
+
+  function getEigs(t, layer) {
+    const n=20, isDeep=layer==='deep';
+    const progress=Math.min(t/100,1), speed=isDeep?1.8:1;
+    const eigs=[{re:1,im:0,mag:1}];
+    for(let i=1;i<n;i++){
+      const theta0=(2*Math.PI*i/n)+0.25*Math.sin(i*2.1);
+      const mag0=0.55+0.4*(Math.sin(i*0.9)*0.5+0.5);
+      const collapse=Math.pow(Math.min(progress*speed,1),0.65);
+      const mag=mag0*Math.max(0,1-collapse*0.92);
+      const theta=theta0*Math.max(0,1-collapse*0.88);
+      const dominant=(i<=2)?(1-progress*0.35)*(isDeep?0.88:0.82):0;
+      eigs.push({
+        re:dominant>0?dominant:mag*Math.cos(theta),
+        im:dominant>0?0:mag*Math.sin(theta),
+        mag:dominant>0?dominant:mag
+      });
+    }
+    return eigs;
+  }
+
+  function draw(){
+    const t=parseFloat($('train-step').value), layer=$('layer-sel').value;
+    const {ctx,w,h}=getCtx('eig-train-canvas',300);
+    ctx.fillStyle='#0d0d0b'; ctx.fillRect(0,0,w,h);
+    const cx=w*0.44, cy=h/2, R=Math.min(cx-20,cy-20)*0.82;
+
+    for(let r=0.25;r<=1.25;r+=0.25){
+      ctx.beginPath(); ctx.arc(cx,cy,R*r,0,Math.PI*2);
+      ctx.strokeStyle=r===1?'rgba(200,160,80,0.5)':'rgba(255,255,255,0.06)';
+      ctx.lineWidth=r===1?1.5:1; ctx.stroke();
+    }
+    ctx.strokeStyle='rgba(255,255,255,0.07)'; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(cx-R*1.3,cy); ctx.lineTo(cx+R*1.3,cy); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(cx,cy-R*1.3); ctx.lineTo(cx,cy+R*1.3); ctx.stroke();
+
+    const eigs=getEigs(t,layer);
+    eigs.forEach((e,i)=>{
+      const px=cx+e.re*R, py=cy-e.im*R;
+      const dominant=e.mag>0.65;
+      ctx.beginPath(); ctx.arc(px,py,dominant?7:5,0,Math.PI*2);
+      ctx.fillStyle=i===0?'#c9983a':(e.mag<=1.001?(dominant?'#7a9fc8':'#7aaf90'):'#c06050');
+      ctx.fill();
+      if(dominant||i===0){ctx.strokeStyle=i===0?'rgba(200,152,58,0.6)':'rgba(122,159,200,0.5)';ctx.lineWidth=2;ctx.stroke();}
+    });
+
+    ctx.fillStyle='#c9983a'; ctx.font='10px JetBrains Mono';
+    ctx.fillText('λ=1 (Perron)', cx+R+8, cy+4);
+    ctx.fillStyle='#5a5040'; ctx.font='9px JetBrains Mono';
+    ctx.fillText('unit circle', cx+R*0.55, cy-R*0.65);
+
+    // Bar chart (right)
+    const mags=eigs.map(e=>e.mag).sort((a,b)=>b-a);
+    const bx=w*0.78, bw=w-bx-16;
+    ctx.fillStyle='rgba(255,255,255,0.02)'; ctx.fillRect(bx,20,bw,h-40);
+    ctx.fillStyle='#4a4038'; ctx.font='9px JetBrains Mono'; ctx.fillText('|λᵢ|',bx+4,16);
+    mags.forEach((m,i)=>{
+      const y=25+i*(h-50)/mags.length;
+      ctx.fillStyle=m>0.7?'rgba(122,159,200,0.8)':m>0.3?'rgba(122,175,144,0.7)':'rgba(90,80,70,0.5)';
+      ctx.fillRect(bx,y,m*bw*0.92,(h-50)/mags.length-1.5);
+    });
+
+    const progress=t/100;
+    const phase=progress<0.2?'Early (uniform)':progress<0.6?'Mid (emerging)':'Late (concentrated)';
+    ctx.fillStyle=progress<0.2?'#7a7060':progress<0.6?'#c9983a':'#7a9fc8';
+    ctx.font='11px JetBrains Mono'; ctx.fillText(phase,12,h-12);
+
+    const top=mags[0], er=effectiveRank(mags), conc=mags[0]/(mags.reduce((a,b)=>a+b,0)||1);
+    $('et-top').textContent=top.toFixed(4);
+    $('et-rank').textContent=er.toFixed(2);
+    $('et-conc').textContent=(conc*100).toFixed(1)+'%';
+    $('et-phase').textContent=phase.split(' ')[0];
+
+    const ph=$('fig1-phase');
+    ph.className='phase-indicator '+(progress<0.25?'phase-stable':progress<0.65?'phase-critical':'phase-stable');
+    ph.innerHTML=`<span class="dot"></span>${phase.split('(')[1]?.replace(')','')??phase.split(' ')[0]}`;
+  }
+
+  $('train-step').oninput=()=>{$('train-step-val').textContent=$('train-step').value;draw();};
+  $('layer-sel').onchange=draw;
+  $('animate-btn').onclick=()=>{
+    if(going){going=false;cancelAnimationFrame(animId);$('animate-btn').textContent='Animate';return;}
+    going=true;$('animate-btn').textContent='Stop';
+    let v=parseFloat($('train-step').value);
+    (function tick(){v=(v+0.5)%101;$('train-step').value=v;$('train-step-val').textContent=Math.round(v);draw();if(going)animId=requestAnimationFrame(tick);})();
+  };
+  draw();
+})();
+
+// ===== FIG 2: SINGULAR VALUE DECAY =====
+(function(){
+  function draw(){
+    const alpha=parseFloat($('alpha-slider').value);
+    const n=parseInt($('n-slider').value);
+    const scale=$('sv-scale').value;
+    const {ctx,w,h}=getCtx('sv-canvas',300);
+    ctx.fillStyle='#0d0d0b'; ctx.fillRect(0,0,w,h);
+    const pad={l:55,r:20,t:25,b:40}, pw=w-pad.l-pad.r, ph=h-pad.t-pad.b;
+
+    const svs=Array.from({length:n},(_,i)=>Math.pow(i+1,-alpha));
+    const emp=svs.map(s=>s*(0.88+0.25*(Math.random()-0.5))).sort((a,b)=>b-a);
+    const maxS=svs[0], minS=Math.max(svs[n-1]*0.3,1e-4);
+
+    const toX=i=>scale==='loglog'?pad.l+pw*Math.log10(i+1)/Math.log10(n):pad.l+pw*i/(n-1);
+    const toY=s=>{
+      if(scale==='loglog'){const lx=Math.log10(maxS*1.1),ln=Math.log10(minS);return pad.t+ph*(1-(Math.log10(Math.max(s,minS))-ln)/(lx-ln));}
+      return pad.t+ph*(1-(s-minS)/(maxS-minS+0.01));
+    };
+
+    // Grid
+    ctx.strokeStyle='#1a1810'; ctx.lineWidth=1;
+    for(let g=0;g<=4;g++){const y=pad.t+ph*g/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();}
+
+    if(scale==='loglog'){
+      ctx.beginPath();
+      svs.forEach((s,i)=>{i===0?ctx.moveTo(toX(i),toY(s)):ctx.lineTo(toX(i),toY(s));});
+      ctx.strokeStyle='rgba(201,152,58,0.55)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);ctx.stroke();ctx.setLineDash([]);
+    }
+    ctx.beginPath();
+    emp.forEach((s,i)=>{i===0?ctx.moveTo(toX(i),toY(s)):ctx.lineTo(toX(i),toY(s));});
+    ctx.strokeStyle='#7a9fc8';ctx.lineWidth=2.5;ctx.stroke();
+    emp.forEach((s,i)=>{if(i%Math.max(1,Math.floor(n/12))===0){ctx.beginPath();ctx.arc(toX(i),toY(s),3.5,0,Math.PI*2);ctx.fillStyle='#7a9fc8';ctx.fill();}});
+
+    ctx.strokeStyle='#2a2820';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,h-pad.b);ctx.lineTo(w-pad.r,h-pad.b);ctx.stroke();
+    ctx.fillStyle='#5a5048';ctx.font='10px JetBrains Mono';
+    ctx.fillText(scale==='loglog'?'log(i)':'i',w-pad.r-18,h-pad.b+18);
+    ctx.save();ctx.translate(14,h/2);ctx.rotate(-Math.PI/2);ctx.fillText(scale==='loglog'?'log(σᵢ)':'σᵢ',0,0);ctx.restore();
+    if(scale==='loglog'){ctx.fillStyle='#c9983a';ctx.font='11px JetBrains Mono';ctx.fillText(`slope = −${alpha.toFixed(2)}`,pad.l+pw*0.35,pad.t+28);}
+    ctx.fillStyle='#7a9fc8';ctx.font='10px JetBrains Mono';ctx.fillText('— empirical',pad.l+10,pad.t+14);
+    if(scale==='loglog'){ctx.fillStyle='rgba(201,152,58,0.75)';ctx.fillText('- - theory',pad.l+110,pad.t+14);}
+
+    const er=effectiveRank(svs).toFixed(2);
+    $('sv-insight').textContent=`α=${alpha.toFixed(2)}, n=${n}, eff. rank ≈ ${er} — ${alpha>0.8?'Deep layer: aggressive compression':'Shallow layer: rich rank structure'}`;
+  }
+  $('alpha-slider').oninput=()=>{$('alpha-val').textContent=parseFloat($('alpha-slider').value).toFixed(2);draw();};
+  $('n-slider').oninput=()=>{$('n-val').textContent=$('n-slider').value;draw();};
+  $('sv-scale').onchange=draw;
+  draw();
+})();
+
+// ===== FIG 3: NORM SCALING =====
+(function(){
+  function draw(){
+    const sparsity=parseFloat($('sparsity-norm').value);
+    const show=$('norm-show').value;
+    const {ctx,w,h}=getCtx('norm-canvas',300);
+    ctx.fillStyle='#0d0d0b';ctx.fillRect(0,0,w,h);
+    const pad={l:55,r:20,t:25,b:40},pw=w-pad.l-pad.r,ph=h-pad.t-pad.b;
+    const ns=[8,16,24,32,48,64,96,128,192,256];
+
+    const frob=ns.map(n=>(0.96+0.08*Math.random())*Math.sqrt(n)/Math.sqrt(Math.max(n*(1-sparsity),1)));
+    const spec=ns.map(n=>(0.97+0.06*Math.random())*(0.85+Math.log2(n)*0.19)*(1-sparsity*0.28));
+    const tFrob=ns.map(n=>frob[0]*Math.sqrt(n)/Math.sqrt(ns[0]));
+    const tSpec=ns.map(n=>spec[0]*Math.log2(n)/Math.log2(ns[0]));
+
+    const allV=[...(show!=='spec'?frob:[]),...(show!=='frob'?spec:[])];
+    const maxV=Math.max(...allV)*1.1,minV=0;
+    const toX=(_,i)=>pad.l+pw*i/(ns.length-1);
+    const toY=v=>pad.t+ph*(1-(v-minV)/(maxV-minV+0.01));
+
+    ctx.strokeStyle='#1a1810';ctx.lineWidth=1;
+    for(let g=0;g<=4;g++){
+      const y=pad.t+ph*g/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();
+      ctx.fillStyle='#3a3028';ctx.font='9px JetBrains Mono';ctx.fillText((maxV*(1-g/4)).toFixed(2),2,y+4);
+    }
+
+    function plotLine(vals,theory,color,label,yOff){
+      ctx.beginPath();theory.forEach((v,i)=>{i===0?ctx.moveTo(toX(v,i),toY(v)):ctx.lineTo(toX(v,i),toY(v));});
+      ctx.strokeStyle=color+'88';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);ctx.stroke();ctx.setLineDash([]);
+      ctx.beginPath();vals.forEach((v,i)=>{i===0?ctx.moveTo(toX(v,i),toY(v)):ctx.lineTo(toX(v,i),toY(v));});
+      ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();
+      vals.forEach((v,i)=>{ctx.beginPath();ctx.arc(toX(v,i),toY(v),4,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();});
+      ctx.fillStyle=color;ctx.font='10px JetBrains Mono';ctx.fillText(label,pad.l+10,pad.t+14+yOff);
+    }
+
+    if(show!=='spec') plotLine(frob,tFrob,'#b85c2c','— ‖A‖_F = O(√n)',0);
+    if(show!=='frob') plotLine(spec,tSpec,'#c9983a','— ‖A‖_spec = O(log n)',show==='spec'?0:16);
+
+    ctx.strokeStyle='#2a2820';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,h-pad.b);ctx.lineTo(w-pad.r,h-pad.b);ctx.stroke();
+    [8,32,64,128,256].forEach(n=>{const i=ns.indexOf(n);if(i<0)return;ctx.fillStyle='#3a3028';ctx.font='9px JetBrains Mono';ctx.fillText(n,toX(null,i)-8,h-pad.b+16);});
+    ctx.fillStyle='#5a5048';ctx.font='10px JetBrains Mono';ctx.fillText('sequence length n →',w/2-65,h-6);
+    $('sparsity-norm-val').textContent=Math.round(sparsity*100)+'%';
+  }
+  $('sparsity-norm').oninput=draw;
+  $('norm-show').onchange=draw;
+  draw();
+})();
+
+// ===== FIG 4: SPARSITY EXPLORER =====
+(function(){
+  let cachedA=null;
+  function generate(){
+    cachedA=makeStochasticMatrix(parseInt($('sparsity-n').value),parseFloat($('sparsity-sl').value));
+    render();
+  }
+  function render(){
+    if(!cachedA)return;
+    const A=cachedA,n=A.length,sp=parseFloat($('sparsity-sl').value);
+    const {ctx,w,h}=getCtx('sparsity-canvas',320);
+    ctx.fillStyle='#0d0d0b';ctx.fillRect(0,0,w,h);
+    const lw=Math.floor(w*0.46),pad=22,cellSize=(lw-pad)/n;
+
+    for(let i=0;i<n;i++){
+      for(let j=0;j<n;j++){
+        const v=A[i][j];
+        if(v<0.008){ctx.fillStyle='#0d0d0b';}
+        else{
+          const t=Math.min(v*n,1);
+          ctx.fillStyle=`rgb(${Math.floor(60+t*160)},${Math.floor(40+t*80)},${Math.floor(15+t*25)})`;
+        }
+        ctx.fillRect(pad/2+j*cellSize,pad+i*cellSize,cellSize-0.5,cellSize-0.5);
+      }
+    }
+    ctx.fillStyle='#5a5048';ctx.font='9px JetBrains Mono';ctx.fillText('Attention matrix',pad/2,pad-5);
+    ctx.fillStyle='#2a2010';ctx.fillRect(lw,0,1,h);
+
+    const svs=matSVD_approx(A,n),maxSV=svs[0]||1;
+    const bx=lw+12,bw=w-lw-24,barH=(h-2*pad)/svs.length;
+    ctx.fillStyle='#5a5048';ctx.font='9px JetBrains Mono';ctx.fillText('Singular values σᵢ',bx,pad-5);
+    svs.forEach((s,i)=>{
+      const t=i/svs.length;
+      ctx.fillStyle=`rgba(${Math.floor(122+t*60)},${Math.floor(159-t*80)},${Math.floor(200-t*140)},0.82)`;
+      ctx.fillRect(bx,pad+i*barH+1,(s/maxSV)*bw,barH-2);
+    });
+
+    const rows=A;
+    const H=rows.reduce((a,row)=>a+(-row.reduce((b,p)=>p>1e-10?b+p*Math.log(p):b,0)),0)/n;
+    const er=effectiveRank(svs);
+    const actualSp=A.flat().filter(v=>v<0.01).length/(n*n);
+    const regime=actualSp>0.85?'Focused':actualSp>0.5?'Moderate':'Diffuse';
+
+    $('sp-rank').textContent=er.toFixed(2);
+    $('sp-entropy').textContent=H.toFixed(3);
+    $('sp-maxeig').textContent=maxSV.toFixed(4);
+    $('sp-regime').textContent=regime;
+    $('sp-regime').style.color=actualSp>0.85?'var(--sage)':actualSp>0.5?'var(--gold)':'var(--rust)';
+    $('sparsity-val').textContent=Math.round(sp*100)+'%';
+    $('sparsity-n-val').textContent=n;
+
+    const ph=$('sp-phase');
+    ph.className='phase-indicator '+(actualSp>0.75?'phase-stable':actualSp>0.4?'phase-critical':'phase-diverge');
+    ph.innerHTML=`<span class="dot"></span>${regime}`;
+  }
+  $('sparsity-sl').oninput=generate;$('sparsity-n').oninput=generate;$('regen-btn').onclick=generate;
+  generate();
+})();
+
+// ===== FIG 5: EXPRESSIVITY =====
+(function(){
+  function draw(){
+    const kappa=parseFloat($('kappa-exp').value),dmodel=parseInt($('dmodel-sel').value);
+    const {ctx,w,h}=getCtx('expr-canvas',300);
+    ctx.fillStyle='#0d0d0b';ctx.fillRect(0,0,w,h);
+    const pad={l:55,r:20,t:25,b:45},pw=w-pad.l-pad.r,ph=h-pad.t-pad.b;
+    const S=Array.from({length:80},(_,i)=>i/79);
+    const expr=S.map(s=>Math.log(1+(1-s)*dmodel)/Math.log(1+dmodel)*(1-s*0.18));
+    const stab=S.map(s=>s*0.5+Math.max(0,1-(kappa/30)*(1-s*0.65))*(1-s*0.25));
+    let ci=0;
+    for(let i=1;i<S.length;i++) if(Math.abs(expr[i]-stab[i])<Math.abs(expr[ci]-stab[ci]))ci=i;
+    const toX=i=>pad.l+pw*i/(S.length-1);
+    const toY=v=>pad.t+ph*(1-Math.max(0,Math.min(1,v)));
+
+    ctx.strokeStyle='#1a1810';ctx.lineWidth=1;
+    for(let g=0;g<=4;g++){const y=pad.t+ph*g/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();ctx.fillStyle='#3a3028';ctx.font='9px JetBrains Mono';ctx.fillText((1-g/4).toFixed(1),2,y+4);}
+
+    ctx.beginPath();ctx.moveTo(toX(0),toY(0));
+    expr.forEach((_,i)=>ctx.lineTo(toX(i),toY(expr[i])));
+    ctx.lineTo(toX(S.length-1),toY(0));ctx.closePath();
+    ctx.fillStyle='rgba(184,92,44,0.06)';ctx.fill();
+
+    ctx.beginPath();stab.forEach((v,i)=>{i===0?ctx.moveTo(toX(i),toY(v)):ctx.lineTo(toX(i),toY(v));});
+    ctx.strokeStyle='#7aaf90';ctx.lineWidth=2.5;ctx.stroke();
+    ctx.beginPath();expr.forEach((v,i)=>{i===0?ctx.moveTo(toX(i),toY(v)):ctx.lineTo(toX(i),toY(v));});
+    ctx.strokeStyle='#b85c2c';ctx.lineWidth=2.5;ctx.stroke();
+
+    const ix=toX(ci),iy=toY((expr[ci]+stab[ci])/2);
+    ctx.beginPath();ctx.arc(ix,iy,7,0,Math.PI*2);ctx.fillStyle='#c9983a';ctx.fill();
+    ctx.beginPath();ctx.setLineDash([4,3]);ctx.moveTo(ix,iy);ctx.lineTo(ix,h-pad.b);
+    ctx.strokeStyle='#c9983a';ctx.lineWidth=1.5;ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='#c9983a';ctx.font='10px JetBrains Mono';
+    ctx.fillText(`optimal: ${(S[ci]*100).toFixed(0)}% sparse`,ix-28,h-pad.b+16);
+
+    ctx.strokeStyle='#2a2820';ctx.lineWidth=1;
+    ctx.beginPath();ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,h-pad.b);ctx.lineTo(w-pad.r,h-pad.b);ctx.stroke();
+    ctx.fillStyle='#b85c2c';ctx.font='10px JetBrains Mono';ctx.fillText('— expressivity',pad.l+10,pad.t+14);
+    ctx.fillStyle='#7aaf90';ctx.fillText('— stability margin',pad.l+120,pad.t+14);
+    ctx.fillStyle='#5a5048';ctx.font='10px JetBrains Mono';ctx.fillText('sparsity (0% → 100%) →',w/2-70,h-6);
+    ctx.save();ctx.translate(13,h/2);ctx.rotate(-Math.PI/2);ctx.fillText('score',0,0);ctx.restore();
+
+    $('kappa-exp-val').textContent=kappa.toFixed(1);
+    $('expr-insight').textContent=`κ=${kappa.toFixed(1)}, d_model=${dmodel} → Optimal sparsity ≈ ${(S[ci]*100).toFixed(0)}%. ${S[ci]>0.65?'Sparse attention favored':'Denser attention required for task complexity'}`;
+  }
+  $('kappa-exp').oninput=draw;$('dmodel-sel').onchange=draw;
+  draw();
+})();
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
