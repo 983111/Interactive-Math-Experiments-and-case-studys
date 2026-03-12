@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vishwajeet Adkine — Research Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --white: #ffffff;
+  --off-white: #fafaf9;
+  --paper: #f5f4f1;
+  --rule: #e2e0db;
+  --rule-light: #edebe7;
+  --ink: #111110;
+  --ink-mid: #3a3935;
+  --ink-muted: #7a7870;
+  --accent: #c0392b;
+  --accent-warm: #d4512a;
+  --accent-gold: #b8922a;
+  --accent-sage: #3a6b5a;
+  --accent-slate: #2d4a6e;
+  --accent-muted: #f0ebe3;
+  --nav-h: 64px;
+  --radius: 3px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(255,255,255,0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.nav-logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--white) !important;
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  text-decoration: none !important;
+  transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--accent) !important; }
+.nav-cta::after { display: none !important; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: all 0.3s;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%;
+  height: 100%;
+  background: var(--paper);
+  z-index: 0;
+}
+
+.hero-left {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+  border-right: 1px solid var(--rule);
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-tagline {
+  font-size: 1.05rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  max-width: 42ch;
+  line-height: 1.7;
+  margin-bottom: 2.8rem;
+  border-left: 2px solid var(--rule);
+  padding-left: 1.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--white);
+  padding: 0.75rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: var(--accent); }
+
+.btn-secondary {
+  color: var(--ink-mid);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.2s;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+}
+.btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
+
+.hero-right {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 8vw, 7rem) clamp(1.5rem, 5vw, 5rem);
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 2.5rem;
+}
+
+.stat-block {
+  background: var(--paper);
+  padding: 1.5rem 1.6rem;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-focus-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hero-focus-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+}
+
+.hero-focus-list li::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: clamp(1.5rem, 5vw, 5rem);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  z-index: 2;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: var(--rule);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  width: 1px;
+  height: 100%;
+  background: var(--accent);
+  animation: scroll-drop 2s ease-in-out infinite;
+}
+
+@keyframes scroll-drop {
+  0% { top: -100%; }
+  100% { top: 200%; }
+}
+
+/* ── SECTION STRUCTURE ── */
+section {
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.section-title em { font-style: italic; color: var(--accent); }
+
+.section-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  background: var(--paper);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.section-link {
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.section-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── ABOUT STRIP ── */
+.about-strip {
+  background: var(--ink);
+  color: var(--white);
+  padding: 3.5rem clamp(1.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.about-strip-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1rem;
+}
+
+.about-strip-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.about-strip-name em { font-style: italic; color: var(--accent); }
+
+.about-strip-text {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.75;
+  max-width: 72ch;
+  margin-bottom: 1.5rem;
+}
+
+.about-strip-text strong { color: rgba(255,255,255,0.95); font-weight: 500; }
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.3rem 0.75rem;
+  border-radius: 2px;
+}
+
+/* ── RESEARCH CARDS ── */
+#research { background: var(--off-white); }
+
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.research-card {
+  background: var(--white);
+  padding: 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.research-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.research-card:hover { background: var(--paper); }
+.research-card:hover::before { transform: scaleX(1); }
+
+.card-accent-red::before { background: var(--accent); }
+.card-accent-gold::before { background: var(--accent-gold); }
+.card-accent-sage::before { background: var(--accent-sage); }
+.card-accent-slate::before { background: var(--accent-slate); }
+.card-accent-warm::before { background: var(--accent-warm); }
+.card-accent-mid::before { background: var(--ink-mid); }
+
+.card-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.card-category {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: inline-block;
+}
+
+.cat-red { color: var(--accent); }
+.cat-gold { color: var(--accent-gold); }
+.cat-sage { color: var(--accent-sage); }
+.cat-slate { color: var(--accent-slate); }
+.cat-warm { color: var(--accent-warm); }
+.cat-mid { color: var(--ink-mid); }
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 0.9rem;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+  line-height: 1.65;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule-light);
+}
+
+.card-read {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: gap 0.2s;
+}
+
+.research-card:hover .card-read { gap: 0.7rem; }
+
+.card-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  background: var(--rule-light);
+  padding: 0.2rem 0.5rem;
+  border-radius: 1px;
+}
+
+/* ── FEATURED / INTERACTIVE PAPERS ── */
+#interactive { background: var(--white); }
+
+.papers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--rule);
+}
+
+.paper-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 2rem;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.paper-row:last-child { border-bottom: none; }
+.paper-row:hover { background: var(--paper); }
+
+.paper-index {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: var(--rule);
+  line-height: 1;
+  text-align: center;
+}
+
+.paper-body {}
+
+.paper-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.paper-subject {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.paper-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: #eef3ff;
+  color: var(--accent-slate);
+  padding: 0.18rem 0.55rem;
+  border-radius: 2px;
+}
+
+.paper-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.paper-summary {
+  font-size: 0.83rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+.paper-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.paper-btn {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+  color: var(--ink-mid);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.paper-row:hover .paper-btn {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
+}
+
+/* ── PROJECTS SECTION ── */
+#projects { background: var(--paper); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.project-featured {
+  background: var(--white);
+  padding: 2.5rem;
+  grid-row: span 2;
+}
+
+.project-card {
+  background: var(--white);
+  padding: 2rem;
+}
+
+.project-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.project-card-label::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.project-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: 0.7rem;
+}
+
+.project-title em { font-style: italic; color: var(--accent); }
+
+.project-desc {
+  font-size: 0.86rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.stack-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-mid);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+}
+
+.project-link {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+.project-link:hover { color: var(--accent); border-color: var(--accent); }
+
+.small-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.45rem;
+  color: var(--ink);
+}
+
+.small-card-desc {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* ── CREDENTIALS STRIP ── */
+.credentials-strip {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background-color: var(--rule);
+}
+
+.credential-item {
+  background: var(--white);
+  padding: 1.5rem 1.8rem;
+}
+
+.cred-org {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.4rem;
+}
+
+.cred-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+}
+
+.contact-left {
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  border-right: 1px solid var(--rule);
+}
+
+.contact-right {
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+  background: var(--paper);
+}
+
+.contact-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+}
+
+.contact-heading em { font-style: italic; color: var(--accent); }
+
+.contact-sub {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  max-width: 42ch;
+  margin-bottom: 2rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-link-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+}
+
+.contact-link-row:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.cl-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.contact-link-row:hover .cl-icon {
+  background: rgba(255,255,255,0.12);
+}
+
+.cl-text { font-size: 0.85rem; font-weight: 500; }
+.cl-sub { font-size: 0.72rem; color: var(--ink-muted); }
+.contact-link-row:hover .cl-sub { color: rgba(255,255,255,0.6); }
+
+.contact-right-head {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 1.5rem;
+}
+
+.contact-note-block {
+  border-left: 2px solid var(--rule);
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-note-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-bottom: 0.3rem;
+}
+
+.contact-note-text {
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.4);
+  padding: 1.8rem clamp(1.5rem, 5vw, 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.footer-left strong {
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+
+.footer-right {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── ANIMATIONS ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-in:nth-child(2) { transition-delay: 0.08s; }
+.fade-in:nth-child(3) { transition-delay: 0.16s; }
+.fade-in:nth-child(4) { transition-delay: 0.24s; }
+.fade-in:nth-child(5) { transition-delay: 0.32s; }
+.fade-in:nth-child(6) { transition-delay: 0.4s; }
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--rule);
+  margin: 0;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero::before { display: none; }
+
+  .hero-left {
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .hero-right {
+    background: var(--paper);
+  }
+
+  .research-grid { grid-template-columns: 1fr; }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-featured { grid-row: auto; }
+
+  .credentials-strip { grid-template-columns: 1fr 1fr; }
+
+  #contact { grid-template-columns: 1fr; }
+  .contact-left { border-right: none; border-bottom: 1px solid var(--rule); }
+
+  .about-strip { grid-template-columns: 1fr; gap: 1.5rem; }
+
+  .paper-row { grid-template-columns: 50px 1fr; }
+  .paper-action { display: none; }
+}
+
+@media (max-width: 600px) {
+  .credentials-strip { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav" role="navigation" aria-label="Main navigation">
+  <a href="#" class="nav-logo">V.<span>A</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#interactive">Papers</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home" aria-label="Introduction">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Research Portfolio · AI Safety &amp; Systems</p>
+    <h1 class="hero-name">Vishwa-<br>jeet<br><em>Adkine</em></h1>
+    <p class="hero-tagline">
+      Builder, researcher — building AI systems that serve underserved communities across that are envisioned to serve across the world.
+    </p>
+    <div class="hero-actions">
+      <a href="#research" class="btn-primary">View Research</a>
+      <a href="#projects" class="btn-secondary">Explore Projects →</a>
+    </div>
+    <div class="hero-scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-block fade-in">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Research Papers</div>
+      </div>
+      <div class="stat-block fade-in">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Deployed Systems</div>
+      </div>
+      <div class="stat-block fade-in">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Interactive Papers</div>
+      </div>
+      <div class="stat-block fade-in">
+        <div class="stat-num">17</div>
+        <div class="stat-label">Age at Build Time</div>
+      </div>
+    </div>
+    <ul class="hero-focus-list">
+      <li>AI Safety Engineering &amp; Prompt Injection Defense</li>
+      <li>Spectral Analysis of Transformer Attention</li>
+      <li>AgriTech &amp; Crop Disease Detection (KhetiPlus)</li>
+      <li>Malicious URL Detection &amp; Web Trust Scoring</li>
+      <li>Gradient Descent as a Dynamical System</li>
+      <li>Multi-Agent Workspace Architectures</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="about-strip" id="about">
+  <div>
+    <p class="about-strip-label">About</p>
+    <h2 class="about-strip-name">Building AI that<br><em>matters</em></h2>
+  </div>
+  <div>
+    <p class="about-strip-text">
+      I'm a 17-year-old builder and researcher focused on <strong>applied AI systems</strong> that address real-world gaps — from crop disease detection for Indian farmers to AI safety mechanisms that defend against prompt injection attacks. My work spans the full stack: mobile apps, browser automation, multi-agent platforms, and theoretical ML research.
+    </p>
+    <p class="about-strip-text">
+      Current focus: BSc Artificial Intelligence applicant at for 2027 <strong>MBZUAI</strong>, building the Stremini AI ecosystem — a cross-platform multi-agent workspace, educational platform, and AI-powered keyboard — while publishing research in spectral properties of attention matrices and gradient descent dynamics.
+    </p>
+    <div class="tags-row">
+      <span class="tag">AI Safety</span>
+      <span class="tag">Multi-Agent Systems</span>
+      <span class="tag">Transformer Theory</span>
+      <span class="tag">AgriTech</span>
+      <span class="tag">Cloudflare Workers</span>
+      <span class="tag">Kotlin / Flutter</span>
+      <span class="tag">South Asia Impact</span>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <div>
+      <span class="section-tag">Research</span>
+      <h2 class="section-title" style="margin-top:0.6rem">Case Studies &amp; <em>Investigations</em></h2>
+    </div>
+    <a href="#research" class="section-link">All papers →</a>
+  </div>
+
+  <div class="research-grid">
+
+    <!-- Card 1 -->
+    <a href="promptinjection.html" class="research-card card-accent-red fade-in">
+      <div class="card-num">01 &mdash; Security</div>
+      <span class="card-category cat-red">AI Safety</span>
+      <h3 class="card-title">Protecting AI Chatbots from Prompt Injection Attacks</h3>
+      <p class="card-desc">Pattern-based detection architecture with regex matching, input sanitization, and layered system-prompt hardening. Built and deployed in production for Stremini AI.</p>
+      <div class="card-footer">
+        <span class="card-read">Read case study →</span>
+        <span class="card-type">Practical</span>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="scam-detection.html" class="research-card card-accent-gold fade-in">
+      <div class="card-num">02 &mdash; Security</div>
+      <span class="card-category cat-gold">AI Security</span>
+      <h3 class="card-title">AI-Driven Scam Detection via Text &amp; Link Patterns</h3>
+      <p class="card-desc">Multi-signal detection combining NLP text analysis, WHOIS domain age verification, and Google Safe Browsing API. Deployed as a live website trust-score endpoint.</p>
+      <div class="card-footer">
+        <span class="card-read">Read research →</span>
+        <span class="card-type">Deployed</span>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="self-verification.html" class="research-card card-accent-sage fade-in">
+      <div class="card-num">03 &mdash; Systems</div>
+      <span class="card-category cat-sage">RAG / Grounding</span>
+      <h3 class="card-title">Self-Verification via Real-Time Web Search Grounding</h3>
+      <p class="card-desc">How I eliminated AI hallucinations on current events by injecting verified Serper search results into the system prompt before inference. ~95% accuracy on time-sensitive queries.</p>
+      <div class="card-footer">
+        <span class="card-read">Read writeup →</span>
+        <span class="card-type">Engineering</span>
+      </div>
+    </a>
+
+    <!-- Card 4 -->
+    <a href="Knowledgecutoff.html" class="research-card card-accent-slate fade-in">
+      <div class="card-num">04 &mdash; Systems</div>
+      <span class="card-category cat-slate">Temporal Awareness</span>
+      <h3 class="card-title">Solving the Knowledge Cutoff Problem in Stremini AI</h3>
+      <p class="card-desc">Keyword detection, category-aware search query construction, current date context injection, and trusted source prioritisation — bridging the gap between training cutoff and real-world deployment.</p>
+      <div class="card-footer">
+        <span class="card-read">Read solution →</span>
+        <span class="card-type">Applied</span>
+      </div>
+    </a>
+
+    <!-- Card 5 -->
+    <a href="agritech_reswarch.html" class="research-card card-accent-warm fade-in">
+      <div class="card-num">05 &mdash; Impact</div>
+      <span class="card-category cat-warm">AgriTech</span>
+      <h3 class="card-title">Problems Faced by Indian Farmers &amp; Digital Solutions</h3>
+      <p class="card-desc">Research into market exploitation, climate uncertainty, and resource inaccessibility facing small farmers across India. Proposes an integrated digital framework — the foundation for KhetiAI.</p>
+      <div class="card-footer">
+        <span class="card-read">Read research →</span>
+        <span class="card-type">Field Research</span>
+      </div>
+    </a>
+
+    <!-- Card 6: placeholder -->
+    <a href="#contact" class="research-card card-accent-mid fade-in" style="background:var(--paper);">
+      <div class="card-num">06 &mdash; Ongoing</div>
+      <span class="card-category cat-mid">AI Robustness</span>
+      <h3 class="card-title">Malicious URL Detection with ML Classification</h3>
+      <p class="card-desc">Ongoing research into feature engineering for URL-based phishing detection — combining lexical features, WHOIS signals, and ensemble classifiers for high-precision real-time filtering.</p>
+      <div class="card-footer">
+        <span class="card-read">In progress →</span>
+        <span class="card-type">Research</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- INTERACTIVE PAPERS -->
+<section id="interactive">
+  <div class="section-header">
+    <div>
+      <span class="section-tag">Interactive Papers</span>
+      <h2 class="section-title" style="margin-top:0.6rem">Theoretical ML — <em>Made Visual</em></h2>
+    </div>
+    <span class="section-tag" style="color:var(--accent-sage);border-color:var(--accent-sage)">Live Experiments</span>
+  </div>
+
+  <div class="papers-list">
+
+    <a href="gradient_descent_dynamical.html" class="paper-row fade-in">
+      <div class="paper-index">01</div>
+      <div class="paper-body">
+        <div class="paper-meta">
+          <span class="paper-subject">Optimization Theory</span>
+          <span class="paper-badge">Interactive · 4 Live Figures</span>
+        </div>
+        <h3 class="paper-title">Gradient Descent as a Dynamical System: Stability, Phase Transitions &amp; Convergence</h3>
+        <p class="paper-summary">Treats each gradient update step as a discrete-time map Φ_η : ℝⁿ → ℝⁿ and derives exact stability conditions via spectral radius analysis. Characterises three regimes — geometric convergence, oscillatory divergence, explosion — with interactive bifurcation diagrams and theory-vs-empirical verification.</p>
+      </div>
+      <div class="paper-action">
+        <span class="paper-btn">Open Paper →</span>
+        <span class="section-tag">Vol. 1 · 2025</span>
+      </div>
+    </a>
+
+    <a href="spectral_attention_matrices.html" class="paper-row fade-in">
+      <div class="paper-index">02</div>
+      <div class="paper-body">
+        <div class="paper-meta">
+          <span class="paper-subject">Transformer Theory</span>
+          <span class="paper-badge">Interactive · 5 Live Figures</span>
+        </div>
+        <h3 class="paper-title">Spectral Properties of Attention Matrices in Transformer Models</h3>
+        <p class="paper-summary">Investigates eigenvalue concentration, power-law singular value decay (σᵢ ≈ C/i^α, α ∈ [0.5, 1.0]), norm scaling, and the sparsity–spectrum duality in transformer attention. Derives expressivity bounds and practical sparsity guidelines from first principles.</p>
+      </div>
+      <div class="paper-action">
+        <span class="paper-btn">Open Paper →</span>
+        <span class="section-tag">Vol. 2 · 2025</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<div class="credentials-strip">
+  <div class="credential-item fade-in">
+    <div class="cred-org">University of Southampton</div>
+    <div class="cred-name">BSc Artificial Intelligence Applicant · 2025</div>
+  </div>
+  <div class="credential-item fade-in">
+    <div class="cred-org">Stanford University</div>
+    <div class="cred-name">Machine Learning Certification</div>
+  </div>
+  <div class="credential-item fade-in">
+    <div class="cred-org">DeepLearning.AI</div>
+    <div class="cred-name">Deep Learning Specialization</div>
+  </div>
+  <div class="credential-item fade-in">
+    <div class="cred-org">Stremini AI</div>
+    <div class="cred-name">Founder &amp; Lead Engineer · Cross-platform AI Ecosystem</div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <div>
+      <span class="section-tag">Projects</span>
+      <h2 class="section-title" style="margin-top:0.6rem">Deployed <em>Systems</em></h2>
+    </div>
+    <a href="https://my-portfolio-delta-weld-18.vercel.app/" class="section-link" target="_blank">Full portfolio →</a>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-featured fade-in">
+      <div class="project-card-label">Flagship Product</div>
+      <h3 class="project-title">Stremini <em>AI</em> Workspace</h3>
+      <p class="project-desc">
+        A cross-platform multi-agent AI ecosystem: a web-based workspace with 12 specialised agents across four layers (Intelligence, Creation, Strategy, Execution), an Android AI keyboard, a desktop Electron automation agent, and Stremini Academy — an educational platform with 517 topics across 25 tracks and 6 tiers.
+      </p>
+      <p class="project-desc">
+        Backend on Cloudflare Workers using MBZUAI K2-Think-v2 with robust JSON repair, streaming, LRU caching, and AbortController timeouts. Consistent warm-parchment design language across all surfaces.
+      </p>
+      <div class="project-stack">
+        <span class="stack-tag">Cloudflare Workers</span>
+        <span class="stack-tag">K2-Think-v2</span>
+        <span class="stack-tag">Kotlin</span>
+        <span class="stack-tag">Flutter</span>
+        <span class="stack-tag">Electron</span>
+        <span class="stack-tag">Playwright</span>
+        <span class="stack-tag">Groq Llama 4</span>
+      </div>
+      <a href="https://my-portfolio-delta-weld-18.vercel.app/" class="project-link" target="_blank">View details →</a>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-card-label">AgriTech</div>
+      <h3 class="small-card-title">KhetiAI / KhetiPlus</h3>
+      <p class="small-card-desc">AI-powered crop disease detection and market transparency platform for Indian farmers. Multilingual voice interface, equipment rental marketplace, direct-to-buyer connections.</p>
+      <div class="project-stack" style="margin-top:0.8rem">
+        <span class="stack-tag">Crop Disease CV</span>
+        <span class="stack-tag">Hindi-first UI</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <div class="project-card-label">SaaS · Restaurant Management</div>
+      <h3 class="small-card-title">OrbitDine</h3>
+      <p class="small-card-desc">Restaurant management SaaS with Supabase backend, RLS policy consolidation, and multi-tenant auth. React + TypeScript + Vite stack.</p>
+      <div class="project-stack" style="margin-top:0.8rem">
+        <span class="stack-tag">React</span>
+        <span class="stack-tag">Supabase</span>
+        <span class="stack-tag">Vite</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-left">
+    <p style="font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);margin-bottom:1.5rem;">Get in Touch</p>
+    <h2 class="contact-heading">Let's build<br>something <em>together</em></h2>
+    <p class="contact-sub">
+      Open to research collaborations, AI safety discussions, internship opportunities, and conversations about building technology for underserved communities.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:vishwajeetadkine705@gmail.com" class="contact-link-row">
+        <div class="cl-icon">✉</div>
+        <div>
+          <div class="cl-text">Email</div>
+          <div class="cl-sub">vishwajeetadkine705@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://my-portfolio-delta-weld-18.vercel.app/" class="contact-link-row" target="_blank">
+        <div class="cl-icon">🌐</div>
+        <div>
+          <div class="cl-text">Portfolio</div>
+          <div class="cl-sub">my-portfolio-delta-weld-18.vercel.app</div>
+        </div>
+      </a>
+      <a href="https://websitetrustscore.vishwajeetadkine705.workers.dev/" class="contact-link-row" target="_blank">
+        <div class="cl-icon">🔗</div>
+        <div>
+          <div class="cl-text">Trust Score Demo</div>
+          <div class="cl-sub">Live deployed worker endpoint</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <p class="contact-right-head">Context &amp; Background</p>
+
+    <div class="contact-note-block">
+      <p class="contact-note-label">Current Status</p>
+      <p class="contact-note-text">BSc AI applicant at University of Southampton. Building Stremini AI ecosystem full-time while publishing research papers.</p>
+    </div>
+
+    <div class="contact-note-block">
+      <p class="contact-note-label">Research Interests</p>
+      <p class="contact-note-text">AI safety engineering, spectral properties of transformers, multi-agent architectures, agricultural AI, and prompt injection defense mechanisms.</p>
+    </div>
+
+    <div class="contact-note-block">
+      <p class="contact-note-label">Collaboration Areas</p>
+      <p class="contact-note-text">AI for social impact in South Asia, educational AI platforms, AI safety tooling, applied ML research with deployable outcomes.</p>
+    </div>
+
+    <div class="contact-note-block">
+      <p class="contact-note-label">Technical Stack</p>
+      <p class="contact-note-text">Cloudflare Workers · React · Kotlin · Flutter · Electron · Playwright · Supabase · MBZUAI K2-Think-v2 · Groq Llama 4</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <strong>Vishwajeet Adkine</strong> — Research Portfolio &amp; AI Projects
+  </div>
+  <div class="footer-right">
+    © 2025 · All research authored independently
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Nav scroll effect
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) {
+    nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.07)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// Mobile menu toggle
+const hamburger = document.querySelector('.nav-hamburger');
+const navLinks = document.querySelector('.nav-links');
+let menuOpen = false;
+hamburger.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    navLinks.style.display = 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'fixed';
+    navLinks.style.top = '64px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'rgba(255,255,255,0.98)';
+    navLinks.style.backdropFilter = 'blur(12px)';
+    navLinks.style.padding = '1.5rem 2rem';
+    navLinks.style.borderBottom = '1px solid #e2e0db';
+    navLinks.style.gap = '1.5rem';
+    navLinks.style.zIndex = '999';
+  } else {
+    navLinks.style.display = 'none';
+  }
+});
+
+// Close menu on link click
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    if (window.innerWidth < 900) {
+      menuOpen = false;
+      navLinks.style.display = 'none';
+    }
+  });
+});
+</script>
+</body>
+</html>
