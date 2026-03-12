@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Scam Detection - Research</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Re-creating the essential CSS from index.html for standalone page consistency */
+        :root {
+            --bg-color: #f5f0e8;
+            --card-bg: #ece6d6;
+            --text-main: #0f0e0b;
+            --text-muted: #7a7060;
+            --accent-color: #b85c2c;
+            --accent-light: #c8bfa8;
+            --border-color: #c8bfa8;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.65;
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.02) 60px, rgba(0,0,0,0.02) 61px);
+            background-size: 32px 32px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            font-weight: 500;
+        }
+        
+        a:hover {
+            color: var(--text-main);
+            text-decoration-color: var(--text-main);
+        }
+
+        .research-detail-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(15, 14, 11, 0.08);
+        }
+        
+        @media (max-width: 768px) {
+            .research-detail-container {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        .research-detail-container h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .research-detail-container h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .research-detail-container h3 {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-detail-container .author {
+            color: var(--text-muted);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        
+        .research-detail-container strong {
+            color: var(--accent-color);
+        }
+
+        .research-detail-container p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .research-detail-container ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+        }
+        
+        .research-detail-container ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-detail-container ul li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+
+        .back-link, .proof-button, .technical-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1.5rem;
+            background: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.88rem;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 4px 10px rgba(26, 60, 52, 0.2);
+            margin-right: 1rem;
+            text-underline-offset: 0;
+            text-decoration: none;
+        }
+        
+        .back-link {
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+        
+        .technical-button {
+            background: #2d5a4f;
+            border-color: #2d5a4f;
+        }
+        
+        .back-link:hover {
+            background: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 6px 15px rgba(26, 60, 52, 0.3);
+        }
+
+        .proof-button:hover, .technical-button:hover {
+            background: var(--text-main);
+            border-color: var(--text-main);
+            transform: translateY(-2px);
+        }
+        
+        .practical-use {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            background: var(--accent-light);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 4px;
+        }
+        .date {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .back-link, .proof-button, .technical-button {
+                display: block;
+                width: 100%;
+                margin-right: 0;
+                margin-top: 0.75rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="research-detail-container">
+        <h1> AI-Driven Scam Detection using Text & Link Patterns</h1>
+        <span class="author">Author: Vishwajeet Adkine | AI Security & Reliability</span>
+        <span class="date">Published: November 04, 2025</span>
+        
+        <h2>Core Idea / Abstract</h2>
+        <p>As online scams get sneakier, relying on old security rules just isn't enough. This research introduces a highly effective, multi-talented AI detective that spots scams by looking at three different factors at once, combining Natural Language Processing (NLP), WHOIS data, and the Google Safe Browsing API.</p>
+        <p>The system aims to create a faster, more reliable defense by treating both the content of a message and the structure/provenance of any embedded links as fundamentally untrusted data points that must be cross-verified.</p>
+        
+        <h2>Methodology: How the AI Works</h2>
+        <p>The scam detection operates through three distinct analytical modules to build a comprehensive risk score:</p>
+
+        <h3>1. It Reads the Message's Mind (NLP/Text Analysis)</h3>
+        <p>The AI uses advanced language processing to analyze the actual text for high-risk emotional and rhetorical patterns. It specifically looks for the classic "scam voice"—words that create panic ("Your account is suspended!") or sound too good to be true ("You've won a prize!"). This module identifies psychological manipulation techniques common in phishing and scam messages.</p>
+
+        <h3>2. It Checks the Link's ID (WHOIS & Safe Browsing)</h3>
+        <p>If a message includes a URL, the AI initiates a background check using external security APIs:</p>
+        <ul>
+            <li><strong>WHOIS:</strong> Queries the registration database to see if the website is brand new (a big red flag for disposable scam sites).</li>
+            <li><strong>Safe Browsing:</strong> Queries Google's real-time list to see if authorities have already labeled the site as dangerous, malicious, or a known phishing vector.</li>
+        </ul>
+
+        <h3>3. It Examines the Link's Face (Pattern Analysis)</h3>
+        <p>This module closely inspects the URL's structure for subtle, manual phishing tricks:</p>
+        <ul>
+            <li> Homoglyphs: Checks for characters that look like others (e.g., swapping 'l' for '1' or using Cyrillic characters to mimic Latin letters).</li>
+            <li> Subdomain Abuse: Detects attempts to hide the real domain (e.g., `paypal.login.scamsite.com`).</li>
+            <li> Excessive Encoding: Flags unusual character encoding meant to confuse automated scanners.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>By combining these three clues—the shady language (NLP), the fishy link patterns (Pattern Analysis), and the suspicious official records (WHOIS & Safe Browsing)—the AI catches significantly more scams with fewer false alarms, providing a much stronger, faster defense against online fraud. This multi-layered, semantic-driven approach proves more robust than single-factor keyword or URL blacklisting.</p>
+    
+        <div class="practical-use">
+            <h3>Practical Use & Implementation</h3>
+            <p>This system has been deployed as a core feature of the Stremini AI initiative. Specifically, a website trust score system to analyze URLs has been created and deployed using the Whois API.</p>
+            <p>You can verify this implementation by sending a query with a URL parameter to the endpoint below:</p>
+            <p style="font-family: monospace; background: #eee; padding: 10px; border-radius: 4px; overflow-wrap: break-word;">
+                https://websitetrustscore.vishwajeetadkine705.workers.dev/
+            </p>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <a href="https://websitetrustscore.vishwajeetadkine705.workers.dev/" class="proof-button">Test the Deployed Trust Score System →</a>
+            <a href="trust-score-technical.html" class="technical-button">View Technical Implementation →</a>
+            <a href="index.html#research" class="back-link">← Back to Research Overview</a>
+        </div>
+    </div>
+</body>
+</html>
