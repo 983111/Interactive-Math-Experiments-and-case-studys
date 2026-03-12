@@ -186,12 +186,13 @@ nav {
 
 .hero-name {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-size: clamp(2rem, 4.6vw, 4.1rem);
   font-weight: 400;
   line-height: 1.0;
   letter-spacing: -0.03em;
   color: var(--ink);
   margin-bottom: 1rem;
+  white-space: nowrap;
 }
 
 .hero-name em {
@@ -1038,6 +1039,7 @@ footer {
 @media (max-width: 600px) {
   .credentials-strip { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr 1fr; }
+  .hero-name { font-size: clamp(1.5rem, 8vw, 2rem); }
 }
 </style>
 </head>
@@ -1062,7 +1064,7 @@ footer {
 <section class="hero" id="home" aria-label="Introduction">
   <div class="hero-left">
     <p class="hero-eyebrow">Research Portfolio · AI Safety &amp; Systems</p>
-    <h1 class="hero-name">Vishwa-<br>jeet<br><em>Adkine</em></h1>
+    <h1 class="hero-name">Vishwajeet <em>Adkine</em></h1>
     <p class="hero-tagline">
       Builder, researcher — building AI systems that serve underserved communities across that are envisioned to serve across the world.
     </p>
