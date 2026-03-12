@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problems Faced by Indian Farmers - Research</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Block copied directly from the index.html template for perfect font and style consistency */
+        :root {
+            --bg-color: #f5f0e8;
+            --card-bg: #ece6d6;
+            --text-main: #0f0e0b;
+            --text-muted: #7a7060;
+            --accent-color: #b85c2c;
+            --accent-light: #c8bfa8;
+            --border-color: #c8bfa8;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.65;
+            background-image: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.02) 60px, rgba(0,0,0,0.02) 61px);
+            background-size: 32px 32px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: underline;
+            text-decoration-color: var(--accent-color);
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            font-weight: 500;
+        }
+        
+        a:hover {
+            color: var(--text-main);
+            text-decoration-color: var(--text-main);
+        }
+
+        .research-detail-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(15, 14, 11, 0.08);
+        }
+        
+        @media (max-width: 768px) {
+            .research-detail-container {
+                margin: 2rem 1rem;
+                padding: 1.5rem;
+            }
+        }
+
+        .research-detail-container h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+            padding-bottom: 0.5rem;
+        }
+
+        .research-detail-container h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .research-detail-container h3 {
+            font-size: 1.2rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-detail-container .author {
+            color: var(--text-muted);
+            font-size: 1rem;
+            display: block;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .research-detail-container strong {
+            color: var(--accent-color);
+        }
+
+        .research-detail-container p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .research-detail-container ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
+        }
+        
+        .research-detail-container ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .research-detail-container ul li::before {
+            content: '•';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+
+        .back-link, .proof-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            margin-top: 1.5rem;
+            background: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.88rem;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 4px 10px rgba(26, 60, 52, 0.2);
+            margin-right: 1rem;
+            text-underline-offset: 0;
+            text-decoration: none;
+        }
+        
+        .back-link {
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+        }
+        
+        .back-link:hover {
+            background: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 6px 15px rgba(26, 60, 52, 0.3);
+        }
+
+        .proof-button:hover {
+            background: var(--text-main);
+            border-color: var(--text-main);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="research-detail-container">
+        <h1> Problems Faced by Indian Farmers & Proposed Digital Solutions</h1>
+        <span class="author">Author: Vishwajeet Adkine | Agri-Tech Research</span>
+        
+        <h2>Abstract</h2>
+        <p>This comprehensive study examines the critical, real-world challenges faced by small and marginal farmers across diverse regions of India, including market exploitation, climate uncertainty, and inaccessibility of modern resources. The research proposes an integrated digital framework—the basis for the KhetiAI application—to systematically mitigate these issues by focusing on three pillars: AI-driven agronomic advice, transparent e-marketplaces, and mandatory local-language accessibility, aiming for digital and economic empowerment.</p>
+        
+        <h2>Key Challenges and Proposed Digital Solutions</h2>
+        <p>This research identified three primary areas where technology can offer the most immediate and profound impact, directly influencing the architecture of the KhetiAI platform.</p>
+
+        <h3>1. The Need for Resource Accessibility</h3>
+        <p>Small farmers often cannot afford expensive equipment like tractors and specialized planters, leading to reliance on outdated or inefficient manual methods. A digital solution is required to facilitate resource sharing.</p>
+        <ul>
+            <li><strong>Equipment Rental Marketplaces:</strong> A dedicated platform can facilitate the renting of expensive farm equipment (like tractors) from owners to other small farmers, creating an affordable, shared-economy model.</li>
+        </ul>
+
+        <h3>2. The Challenge of Market Exploitation and Price Discovery</h3>
+        <p>The traditional supply chain creates opacity, resulting in farmers receiving minimal compensation while end-consumer prices soar. A lack of real-time market data leaves farmers vulnerable to price manipulation.</p>
+        <ul>
+            <li><strong>Transparent E-Marketplaces:</strong> Implementing a digital platform that provides real-time, nation-wide pricing and allows farmers to connect directly with bulk buyers, ensuring fairer price discovery and minimizing middleman exploitation.</li>
+        </ul>
+
+        <h3>3. The Barrier of Digital Literacy and Language</h3>
+        <p>Even the best technological solutions fail if they cannot be easily used by the target demographic, particularly farmers with low literacy rates or those who only speak regional languages.</p>
+        <ul>
+            <li><strong>Local Language Interface:</strong> Solutions must be designed with voice and audio UI in local languages (Hindi-first, Bengali, Marathi, etc.), ensuring that the technology is usable by farmers with low literacy or limited technical experience, making the system truly accessible.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>The core challenges facing farmers—from market exploitation to climate uncertainty—can be systematically mitigated through an integrated digital framework. By combining AI-driven agronomic advice with transparent e-marketplaces and ensuring local-language accessibility, technology can stabilize farm incomes, increase sustainable yields, and usher in an era of digital empowerment for the agricultural sector.</p>
+        
+        <div style="margin-top: 3rem;">
+            <a href="https://my-portfolio-delta-weld-18.vercel.app/" class="proof-button">View KhetiAI Project Details (Implementation) →</a>
+            <a href="index.html#research" class="back-link">← Back to Research Overview</a>
+        </div>
+    </div>
+</body>
+</html>
